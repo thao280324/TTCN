@@ -269,9 +269,9 @@
             this.lblTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTen.Location = new System.Drawing.Point(274, 309);
             this.lblTen.Name = "lblTen";
-            this.lblTen.Size = new System.Drawing.Size(84, 16);
+            this.lblTen.Size = new System.Drawing.Size(102, 16);
             this.lblTen.TabIndex = 26;
-            this.lblTen.Text = "Mã độc giả";
+            this.lblTen.Text = "Mã thành viên";
             // 
             // label4
             // 
@@ -279,9 +279,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(274, 363);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 16);
+            this.label4.Size = new System.Drawing.Size(108, 16);
             this.label4.TabIndex = 27;
-            this.label4.Text = "Tên độc giả";
+            this.label4.Text = "Tên thành viên";
             // 
             // lblSodienthoai
             // 
