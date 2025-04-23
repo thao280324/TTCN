@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form\dangky.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\dangky.Designer.cs">
+      <DependentUpon>dangky.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Baocaonhapsach.cs">
       <SubType>Form</SubType>
     </Compile>
