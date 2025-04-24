@@ -42,12 +42,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoonl = new System.Windows.Forms.RadioButton();
             this.rdooff = new System.Windows.Forms.RadioButton();
-            this.cboMadocgia = new System.Windows.Forms.ComboBox();
+            this.cboMathanhvien = new System.Windows.Forms.ComboBox();
             this.cboManhanvien = new System.Windows.Forms.ComboBox();
             this.mskNgaymuon = new System.Windows.Forms.MaskedTextBox();
             this.txtTennhanvien = new System.Windows.Forms.TextBox();
             this.txtDiachi = new System.Windows.Forms.TextBox();
-            this.txtTendocgia = new System.Windows.Forms.TextBox();
+            this.txtTenthanhvien = new System.Windows.Forms.TextBox();
             this.txtPhieumuon = new System.Windows.Forms.TextBox();
             this.lblHinhthuc = new System.Windows.Forms.Label();
             this.lblDiachi = new System.Windows.Forms.Label();
@@ -188,12 +188,12 @@
             // 
             this.groupBox1.Controls.Add(this.rdoonl);
             this.groupBox1.Controls.Add(this.rdooff);
-            this.groupBox1.Controls.Add(this.cboMadocgia);
+            this.groupBox1.Controls.Add(this.cboMathanhvien);
             this.groupBox1.Controls.Add(this.cboManhanvien);
             this.groupBox1.Controls.Add(this.mskNgaymuon);
             this.groupBox1.Controls.Add(this.txtTennhanvien);
             this.groupBox1.Controls.Add(this.txtDiachi);
-            this.groupBox1.Controls.Add(this.txtTendocgia);
+            this.groupBox1.Controls.Add(this.txtTenthanhvien);
             this.groupBox1.Controls.Add(this.txtPhieumuon);
             this.groupBox1.Controls.Add(this.lblHinhthuc);
             this.groupBox1.Controls.Add(this.lblDiachi);
@@ -232,13 +232,13 @@
             this.rdooff.Text = "Offline";
             this.rdooff.UseVisualStyleBackColor = true;
             // 
-            // cboMadocgia
+            // cboMathanhvien
             // 
-            this.cboMadocgia.FormattingEnabled = true;
-            this.cboMadocgia.Location = new System.Drawing.Point(704, 12);
-            this.cboMadocgia.Name = "cboMadocgia";
-            this.cboMadocgia.Size = new System.Drawing.Size(278, 24);
-            this.cboMadocgia.TabIndex = 16;
+            this.cboMathanhvien.FormattingEnabled = true;
+            this.cboMathanhvien.Location = new System.Drawing.Point(704, 12);
+            this.cboMathanhvien.Name = "cboMathanhvien";
+            this.cboMathanhvien.Size = new System.Drawing.Size(278, 24);
+            this.cboMathanhvien.TabIndex = 16;
             // 
             // cboManhanvien
             // 
@@ -271,12 +271,12 @@
             this.txtDiachi.Size = new System.Drawing.Size(278, 22);
             this.txtDiachi.TabIndex = 11;
             // 
-            // txtTendocgia
+            // txtTenthanhvien
             // 
-            this.txtTendocgia.Location = new System.Drawing.Point(704, 49);
-            this.txtTendocgia.Name = "txtTendocgia";
-            this.txtTendocgia.Size = new System.Drawing.Size(278, 22);
-            this.txtTendocgia.TabIndex = 9;
+            this.txtTenthanhvien.Location = new System.Drawing.Point(704, 49);
+            this.txtTenthanhvien.Name = "txtTenthanhvien";
+            this.txtTenthanhvien.Size = new System.Drawing.Size(278, 22);
+            this.txtTenthanhvien.TabIndex = 9;
             // 
             // txtPhieumuon
             // 
@@ -311,9 +311,9 @@
             this.lblTendocgia.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTendocgia.Location = new System.Drawing.Point(524, 55);
             this.lblTendocgia.Name = "lblTendocgia";
-            this.lblTendocgia.Size = new System.Drawing.Size(90, 16);
+            this.lblTendocgia.Size = new System.Drawing.Size(108, 16);
             this.lblTendocgia.TabIndex = 5;
-            this.lblTendocgia.Text = "Tên độc giả";
+            this.lblTendocgia.Text = "Tên thành viên";
             // 
             // lblMadocgia
             // 
@@ -321,9 +321,9 @@
             this.lblMadocgia.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMadocgia.Location = new System.Drawing.Point(524, 18);
             this.lblMadocgia.Name = "lblMadocgia";
-            this.lblMadocgia.Size = new System.Drawing.Size(84, 16);
+            this.lblMadocgia.Size = new System.Drawing.Size(102, 16);
             this.lblMadocgia.TabIndex = 4;
-            this.lblMadocgia.Text = "Mã độc giả";
+            this.lblMadocgia.Text = "Mã thành viên";
             // 
             // lblTennhanvien
             // 
@@ -663,9 +663,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblHinhthuc;
         private System.Windows.Forms.Label lblDiachi;
-        private System.Windows.Forms.TextBox txtTendocgia;
+        private System.Windows.Forms.TextBox txtTenthanhvien;
         private System.Windows.Forms.TextBox txtPhieumuon;
-        private System.Windows.Forms.ComboBox cboMadocgia;
+        private System.Windows.Forms.ComboBox cboMathanhvien;
         private System.Windows.Forms.ComboBox cboManhanvien;
         private System.Windows.Forms.MaskedTextBox mskNgaymuon;
         private System.Windows.Forms.TextBox txtTennhanvien;

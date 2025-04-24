@@ -45,7 +45,6 @@
             this.btnXoathe = new System.Windows.Forms.Button();
             this.btnBoquathe = new System.Windows.Forms.Button();
             this.btnLuuthe = new System.Windows.Forms.Button();
-            this.lblma = new System.Windows.Forms.Label();
             this.lblTen = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblSodienthoai = new System.Windows.Forms.Label();
@@ -55,7 +54,6 @@
             this.rdoNu = new System.Windows.Forms.RadioButton();
             this.mskNgay = new System.Windows.Forms.MaskedTextBox();
             this.mskSdt = new System.Windows.Forms.MaskedTextBox();
-            this.txtMa = new System.Windows.Forms.TextBox();
             this.txtMadocgia = new System.Windows.Forms.TextBox();
             this.txtTendocgia = new System.Windows.Forms.TextBox();
             this.DataGridView2 = new System.Windows.Forms.DataGridView();
@@ -253,16 +251,6 @@
             this.btnLuuthe.Text = "Lưu";
             this.btnLuuthe.UseVisualStyleBackColor = false;
             // 
-            // lblma
-            // 
-            this.lblma.AutoSize = true;
-            this.lblma.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblma.Location = new System.Drawing.Point(274, 255);
-            this.lblma.Name = "lblma";
-            this.lblma.Size = new System.Drawing.Size(53, 16);
-            this.lblma.TabIndex = 25;
-            this.lblma.Text = "Mã thẻ";
-            // 
             // lblTen
             // 
             this.lblTen.AutoSize = true;
@@ -353,14 +341,6 @@
             this.mskSdt.Size = new System.Drawing.Size(100, 22);
             this.mskSdt.TabIndex = 34;
             // 
-            // txtMa
-            // 
-            this.txtMa.Location = new System.Drawing.Point(394, 249);
-            this.txtMa.Name = "txtMa";
-            this.txtMa.Size = new System.Drawing.Size(170, 22);
-            this.txtMa.TabIndex = 35;
-            this.txtMa.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // txtMadocgia
             // 
             this.txtMadocgia.Location = new System.Drawing.Point(394, 300);
@@ -395,7 +375,6 @@
             this.Controls.Add(this.DataGridView2);
             this.Controls.Add(this.txtTendocgia);
             this.Controls.Add(this.txtMadocgia);
-            this.Controls.Add(this.txtMa);
             this.Controls.Add(this.mskSdt);
             this.Controls.Add(this.mskNgay);
             this.Controls.Add(this.rdoNu);
@@ -405,7 +384,6 @@
             this.Controls.Add(this.lblSodienthoai);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblTen);
-            this.Controls.Add(this.lblma);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -442,7 +420,6 @@
         private System.Windows.Forms.Button btnLuuthe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboTimkiemthe;
-        private System.Windows.Forms.Label lblma;
         private System.Windows.Forms.Label lblTen;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblSodienthoai;
@@ -452,7 +429,6 @@
         private System.Windows.Forms.RadioButton rdoNu;
         private System.Windows.Forms.MaskedTextBox mskNgay;
         private System.Windows.Forms.MaskedTextBox mskSdt;
-        private System.Windows.Forms.TextBox txtMa;
         private System.Windows.Forms.TextBox txtMadocgia;
         private System.Windows.Forms.TextBox txtTendocgia;
         private System.Windows.Forms.DataGridView DataGridView2;
