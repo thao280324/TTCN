@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form\baocao2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\baocao2.Designer.cs">
+      <DependentUpon>baocao2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Baocaonhapsach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,12 @@
     </Compile>
     <Compile Include="Form\Baocaouuthich.Designer.cs">
       <DependentUpon>Baocaouuthich.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\Trangchu.cs">
       <SubType>Form</SubType>
@@ -121,11 +133,17 @@
     <Compile Include="Form\yeucaunhap.Designer.cs">
       <DependentUpon>yeucaunhap.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\baocao2.resx">
+      <DependentUpon>baocao2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Baocaonhapsach.resx">
       <DependentUpon>Baocaonhapsach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Baocaouuthich.resx">
       <DependentUpon>Baocaouuthich.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
