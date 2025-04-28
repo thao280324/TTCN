@@ -12,14 +12,18 @@ namespace thutap
 {
     public partial class Dangkythanhvien : Form
     {
-        public Dangkythanhvien()
+        private string vaiTro;
+        public Dangkythanhvien(string vaiTro)
         {
             InitializeComponent();
+            this.vaiTro = vaiTro;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
+
+        private void Dangkythanhvien_Load(object sender, EventArgs e)
+        {
+            //phân quyền
         }
     }
 }

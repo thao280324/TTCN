@@ -390,6 +390,7 @@
             this.Controls.Add(this.plheader);
             this.Name = "Dangkythanhvien";
             this.Text = "FormQlthe";
+            this.Load += new System.EventHandler(this.Dangkythanhvien_Load);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.plheader.ResumeLayout(false);
             this.plheader.PerformLayout();

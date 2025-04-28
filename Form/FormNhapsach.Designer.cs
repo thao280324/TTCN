@@ -170,7 +170,7 @@
             this.btnTimkiemphieunhap.TabIndex = 0;
             this.btnTimkiemphieunhap.Text = "Tìm kiếm";
             this.btnTimkiemphieunhap.UseVisualStyleBackColor = false;
-            this.btnTimkiemphieunhap.Click += new System.EventHandler(this.btnTimkiemphieunhap_Click);
+//            this.btnTimkiemphieunhap.Click += new System.EventHandler(this.btnTimkiemphieunhap_Click);
             // 
             // grp1
             // 
@@ -445,7 +445,7 @@
             this.lblTong.Size = new System.Drawing.Size(45, 16);
             this.lblTong.TabIndex = 3;
             this.lblTong.Text = "Tổng: ";
-            this.lblTong.Click += new System.EventHandler(this.label4_Click);
+          //  this.lblTong.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblSoluong
             // 
@@ -490,6 +490,7 @@
             this.Controls.Add(this.plheader);
             this.Name = "FormNhapsach";
             this.Text = "FormNhapsach";
+            this.Load += new System.EventHandler(this.FormNhapsach_Load);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.plheader.ResumeLayout(false);
             this.plheader.PerformLayout();

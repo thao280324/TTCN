@@ -12,28 +12,32 @@ namespace thutap
 {
     public partial class Sach : Form
     {
-        public Sach()
+        private string vaiTro;
+        public Sach(string vaiTro)
         {
             InitializeComponent();
+            this.vaiTro = vaiTro;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Sach_Load(object sender, EventArgs e)
         {
-
+            PhanQuyenChucNang();
         }
-
-        private void lblDanhmuc_Click(object sender, EventArgs e)
+        private void PhanQuyenChucNang()
         {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
+            if (vaiTro == "Phó ban thủ thư")
+            {
+                //phân quyền các nút
+            }
+            else if (vaiTro == "Nhân viên thủ thư")
+            {
+                //phân quyền các nút
+            }
+            else if (vaiTro == "Trưởng ban thủ thư")
+            {
+                MessageBox.Show("Bạn không có quyền vào form này!");
+                this.Close();
+            }
 
         }
     }

@@ -37,6 +37,7 @@
             this.cboTimkiemphieunhap = new System.Windows.Forms.ComboBox();
             this.btnTimkiemphieunhap = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnGui = new System.Windows.Forms.Button();
             this.btnThemphieumuon = new System.Windows.Forms.Button();
             this.btnThoatphieu = new System.Windows.Forms.Button();
             this.btnInphieumuon = new System.Windows.Forms.Button();
@@ -151,6 +152,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Azure;
+            this.panel4.Controls.Add(this.btnGui);
             this.panel4.Controls.Add(this.btnThemphieumuon);
             this.panel4.Controls.Add(this.btnThoatphieu);
             this.panel4.Controls.Add(this.btnInphieumuon);
@@ -161,6 +163,18 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(173, 432);
             this.panel4.TabIndex = 26;
+            // 
+            // btnGui
+            // 
+            this.btnGui.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnGui.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGui.ForeColor = System.Drawing.Color.Teal;
+            this.btnGui.Location = new System.Drawing.Point(40, 270);
+            this.btnGui.Name = "btnGui";
+            this.btnGui.Size = new System.Drawing.Size(130, 32);
+            this.btnGui.TabIndex = 8;
+            this.btnGui.Text = "Gửi Phiếu";
+            this.btnGui.UseVisualStyleBackColor = false;
             // 
             // btnThemphieumuon
             // 
@@ -207,7 +221,7 @@
             this.btnSuaphieumuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuaphieumuon.ForeColor = System.Drawing.Color.Teal;
             this.btnSuaphieumuon.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSuaphieumuon.Location = new System.Drawing.Point(41, 85);
+            this.btnSuaphieumuon.Location = new System.Drawing.Point(40, 71);
             this.btnSuaphieumuon.Name = "btnSuaphieumuon";
             this.btnSuaphieumuon.Size = new System.Drawing.Size(81, 32);
             this.btnSuaphieumuon.TabIndex = 2;
@@ -219,7 +233,7 @@
             this.btnXoaphieumuon.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnXoaphieumuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoaphieumuon.ForeColor = System.Drawing.Color.Teal;
-            this.btnXoaphieumuon.Location = new System.Drawing.Point(41, 174);
+            this.btnXoaphieumuon.Location = new System.Drawing.Point(41, 139);
             this.btnXoaphieumuon.Name = "btnXoaphieumuon";
             this.btnXoaphieumuon.Size = new System.Drawing.Size(84, 32);
             this.btnXoaphieumuon.TabIndex = 3;
@@ -231,7 +245,7 @@
             this.btnLuuphieu.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnLuuphieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuphieu.ForeColor = System.Drawing.Color.Teal;
-            this.btnLuuphieu.Location = new System.Drawing.Point(41, 247);
+            this.btnLuuphieu.Location = new System.Drawing.Point(41, 212);
             this.btnLuuphieu.Name = "btnLuuphieu";
             this.btnLuuphieu.Size = new System.Drawing.Size(76, 32);
             this.btnLuuphieu.TabIndex = 4;
@@ -395,7 +409,7 @@
             this.label5.Size = new System.Drawing.Size(65, 16);
             this.label5.TabIndex = 4;
             this.label5.Text = "Mã sách";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+//            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label7
             // 
@@ -459,6 +473,7 @@
             this.Controls.Add(this.plheader);
             this.Name = "Yeucaunhap";
             this.Text = "Yeucaunhap";
+            this.Load += new System.EventHandler(this.Yeucaunhap_Load);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.plheader.ResumeLayout(false);
             this.plheader.PerformLayout();
@@ -511,5 +526,6 @@
         private System.Windows.Forms.TextBox txtTong;
         private System.Windows.Forms.MaskedTextBox mskNgaylap;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnGui;
     }
 }

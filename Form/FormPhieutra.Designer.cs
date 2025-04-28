@@ -202,7 +202,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(508, 112);
             this.dataGridView1.TabIndex = 40;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+//            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // grptra
             // 
@@ -534,7 +534,7 @@
             this.label2.Size = new System.Drawing.Size(113, 16);
             this.label2.TabIndex = 44;
             this.label2.Text = "Phiếu trả sách :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+          //  this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel2
             // 
@@ -546,7 +546,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(505, 41);
             this.panel2.TabIndex = 9;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+//            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label3
             // 
@@ -595,6 +595,7 @@
             this.Controls.Add(this.plheader);
             this.Name = "FormPhieutra";
             this.Text = "FormPhieutra";
+            this.Load += new System.EventHandler(this.FormPhieutra_Load);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.plheader.ResumeLayout(false);
             this.plheader.PerformLayout();

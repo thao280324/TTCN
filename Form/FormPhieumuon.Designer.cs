@@ -170,7 +170,7 @@
             this.cboTimkiemphieumuon.Name = "cboTimkiemphieumuon";
             this.cboTimkiemphieumuon.Size = new System.Drawing.Size(249, 24);
             this.cboTimkiemphieumuon.TabIndex = 1;
-            this.cboTimkiemphieumuon.SelectedIndexChanged += new System.EventHandler(this.cboTimkiemphieumuon_SelectedIndexChanged);
+     //       this.cboTimkiemphieumuon.SelectedIndexChanged += new System.EventHandler(this.cboTimkiemphieumuon_SelectedIndexChanged);
             // 
             // btnTimkiemphieumuon
             // 
@@ -581,7 +581,7 @@
             this.lbldonvi.Size = new System.Drawing.Size(44, 16);
             this.lbldonvi.TabIndex = 6;
             this.lbldonvi.Text = "quyển";
-            this.lbldonvi.Click += new System.EventHandler(this.label8_Click);
+          //  this.lbldonvi.Click += new System.EventHandler(this.label8_Click);
             // 
             // lblTong
             // 
@@ -617,6 +617,7 @@
             this.Controls.Add(this.plheader);
             this.Name = "FormPhieumuon";
             this.Text = "FormPhieumuon";
+            this.Load += new System.EventHandler(this.FormPhieumuon_Load);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.plheader.ResumeLayout(false);
             this.plheader.PerformLayout();

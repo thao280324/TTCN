@@ -12,14 +12,33 @@ namespace thutap
 {
     public partial class Yeucaunhap : Form
     {
-        public Yeucaunhap()
+        private string vaiTro;
+        public Yeucaunhap(string vaiTro)
         {
             InitializeComponent();
+            this.vaiTro = vaiTro;
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
 
+        private void Yeucaunhap_Load(object sender, EventArgs e)
+        {
+            PhanQuyenChucNang();
+        }
+        private void PhanQuyenChucNang()
+        {
+            if (vaiTro == "Nhân viên thủ thư")
+            {
+                //phân quyền
+            }
+            else if (vaiTro == "Phó ban thủ thư")
+            {
+               //phân quyền
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào form Phiếu Phục Chế.");
+                this.Close();
+            }
         }
     }
 }
