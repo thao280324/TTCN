@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace thutap
 {
-    public partial class Phieuphucche : Form
+    public partial class Duyetyeucau : Form
     {
         private string vaiTro;
-        public Phieuphucche(string vaiTro)
+        public Duyetyeucau(string vaiTro)
         {
             InitializeComponent();
             this.vaiTro = vaiTro;
         }
 
-        private void Phieuphucche_Load(object sender, EventArgs e)
+        private void Duyetyeucau_Load(object sender, EventArgs e)
         {
             PhanQuyenChucNang();
         }
@@ -27,12 +27,11 @@ namespace thutap
         {
             if (vaiTro == "Nhân viên thủ thư")
             {
-//phân quyền nút
-
+                //phân quyền
             }
             else if (vaiTro == "Phó ban thủ thư")
             {
-                //phân quyền nút
+                //phân quyền
             }
             else
             {

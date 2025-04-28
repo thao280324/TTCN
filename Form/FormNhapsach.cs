@@ -12,19 +12,32 @@ namespace thutap
 {
     public partial class FormNhapsach : Form
     {
-        public FormNhapsach()
+        private string vaiTro;
+        public FormNhapsach(string vaiTro)
         {
             InitializeComponent();
+            this.vaiTro = vaiTro;
         }
 
-        private void btnTimkiemphieunhap_Click(object sender, EventArgs e)
+        private void FormNhapsach_Load(object sender, EventArgs e)
         {
-
+            PhanQuyenChucNang();
         }
-
-        private void label4_Click(object sender, EventArgs e)
+        private void PhanQuyenChucNang()
         {
-
+            if (vaiTro == "Nhân viên thủ thư")
+            {
+                //phân quyền
+            }
+            else if (vaiTro == "Phó ban thủ thư")
+            {
+                //phân quyền
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào form Phiếu Nhập.");
+                this.Close();
+            }
         }
     }
 }

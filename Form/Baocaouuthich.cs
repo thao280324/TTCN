@@ -12,16 +12,27 @@ namespace thutap
 {
     public partial class Baocaouuthich : Form
     {
-        public Baocaouuthich()
+        private string vaiTro;
+        public Baocaouuthich(string vaiTro)
         {
             InitializeComponent();
+            this.vaiTro = vaiTro;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Baocaouuthich_Load(object sender, EventArgs e)
         {
-
+            if (vaiTro == "Phó ban thủ thư")
+            {
+              //phân quyền
+            }
+            else if (vaiTro == "Trưởng ban thủ thư")
+            {
+                //phân quyền
+            }
+            else
+            {
+               //phân quyền
+            }
         }
-
-        
     }
 }

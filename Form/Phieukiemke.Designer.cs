@@ -459,6 +459,7 @@
             this.Controls.Add(this.plheader);
             this.Name = "Phieukiemke";
             this.Text = "Phieukiemke";
+            this.Load += new System.EventHandler(this.Phieukiemke_Load);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.plheader.ResumeLayout(false);
             this.plheader.PerformLayout();

@@ -12,24 +12,32 @@ namespace thutap
 {
     public partial class FormPhieutra : Form
     {
-        public FormPhieutra()
+        private string vaiTro;
+        public FormPhieutra(string vaiTro)
         {
             InitializeComponent();
+            this.vaiTro = vaiTro;
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void FormPhieutra_Load(object sender, EventArgs e)
         {
-
+            PhanQuyenChucNang();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void PhanQuyenChucNang()
         {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
+            if (vaiTro == "Nhân viên thủ thư")
+            {
+                //phân quyền nút
+            }
+            else if (vaiTro == "Phó ban thủ thư")
+            {
+               //phân quyền nút
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào form Phiếu Trả.");
+                this.Close();
+            }
         }
     }
 }

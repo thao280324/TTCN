@@ -12,14 +12,27 @@ namespace thutap
 {
     public partial class Baocaonhapsach : Form
     {
-        public Baocaonhapsach()
+        private string vaiTro;
+        public Baocaonhapsach(string vaiTro)
         {
             InitializeComponent();
+            this.vaiTro = vaiTro;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Baocaonhapsach_Load(object sender, EventArgs e)
         {
-
+            if (vaiTro == "Phó ban thủ thư")
+            {
+                //phân quyền
+            }
+            else if (vaiTro == "Trưởng ban thủ thư")
+            {
+                //phân quyền
+            }
+            else
+            {
+                //phân quyền
+            }
         }
     }
 }

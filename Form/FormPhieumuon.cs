@@ -12,19 +12,33 @@ namespace thutap
 {
     public partial class FormPhieumuon : Form
     {
-        public FormPhieumuon()
+        private string vaiTro;
+        public FormPhieumuon(string vaiTro)
         {
             InitializeComponent();
+            this.vaiTro = vaiTro;
         }
 
-        private void cboTimkiemphieumuon_SelectedIndexChanged(object sender, EventArgs e)
+        private void FormPhieumuon_Load(object sender, EventArgs e)
         {
-
+            PhanQuyenChucNang();
         }
-
-        private void label8_Click(object sender, EventArgs e)
+        private void PhanQuyenChucNang()
         {
+            if (vaiTro == "Nhân viên thủ thư")
+            {
+                //phân quyền nút
+            }
+            else if (vaiTro == "Phó ban thủ thư")
+            {
+                //phân quyền nút
 
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào form Phiếu Mượn.");
+                this.Close();
+            }
         }
     }
 }

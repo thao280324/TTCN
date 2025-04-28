@@ -129,6 +129,7 @@
             this.btnDangnhap.TabIndex = 4;
             this.btnDangnhap.Text = "Đăng nhập";
             this.btnDangnhap.UseVisualStyleBackColor = false;
+            this.btnDangnhap.Click += new System.EventHandler(this.btnDangnhap_Click);
             // 
             // txtTendangnhap
             // 
@@ -159,7 +160,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Dangnhap";
             this.Text = "FormDangNhap";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Load += new System.EventHandler(this.Dangnhap_Load);
             ((System.ComponentModel.ISupportInitialize)(picLogo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

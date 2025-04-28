@@ -45,11 +45,22 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.plheader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
+            this.plheader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            pictureBox1.Location = new System.Drawing.Point(699, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(105, 69);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // plheader
             // 
@@ -67,22 +78,11 @@
             this.lblPhieunhap.AutoSize = true;
             this.lblPhieunhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhieunhap.ForeColor = System.Drawing.Color.Snow;
-            this.lblPhieunhap.Location = new System.Drawing.Point(78, 30);
+            this.lblPhieunhap.Location = new System.Drawing.Point(58, 29);
             this.lblPhieunhap.Name = "lblPhieunhap";
-            this.lblPhieunhap.Size = new System.Drawing.Size(596, 39);
+            this.lblPhieunhap.Size = new System.Drawing.Size(580, 38);
             this.lblPhieunhap.TabIndex = 0;
             this.lblPhieunhap.Text = "BÁO CÁO SỐ LƯỢNG NHẬP SÁCH\r\n";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            pictureBox1.Location = new System.Drawing.Point(660, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(105, 69);
-            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -111,7 +111,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(600, 162);
             this.dataGridView1.TabIndex = 8;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // In
             // 
@@ -213,9 +212,10 @@
             this.Controls.Add(this.plheader);
             this.Name = "Baocaonhapsach";
             this.Text = "Baocaonhapsach";
+            this.Load += new System.EventHandler(this.Baocaonhapsach_Load);
+            ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.plheader.ResumeLayout(false);
             this.plheader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

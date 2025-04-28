@@ -47,6 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\function.cs" />
+    <Compile Include="Form\Duyetyeucau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Duyetyeucau.Designer.cs">
+      <DependentUpon>Duyetyeucau.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Baocaonhapsach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +128,9 @@
     <Compile Include="Form\yeucaunhap.Designer.cs">
       <DependentUpon>yeucaunhap.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\Duyetyeucau.resx">
+      <DependentUpon>Duyetyeucau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Baocaonhapsach.resx">
       <DependentUpon>Baocaonhapsach.cs</DependentUpon>
     </EmbeddedResource>
