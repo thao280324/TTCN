@@ -73,7 +73,7 @@
             // 
             picLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
-            picLogo.Location = new System.Drawing.Point(676, 12);
+            picLogo.Location = new System.Drawing.Point(709, 12);
             picLogo.Name = "picLogo";
             picLogo.Size = new System.Drawing.Size(90, 69);
             picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -101,7 +101,6 @@
             this.label1.Size = new System.Drawing.Size(604, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "BÁO CÁO SÁCH ĐƯỢC ƯA THÍCH NHẤT";
-           // this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 

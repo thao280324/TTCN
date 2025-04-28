@@ -31,8 +31,7 @@ namespace thutap
             }
             else
             {
-                MessageBox.Show("Bạn không có quyền xem báo cáo!");
-                this.Close();
+                //phân quyền
             }
         }
     }
