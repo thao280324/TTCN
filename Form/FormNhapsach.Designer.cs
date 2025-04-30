@@ -51,7 +51,6 @@
             this.btnThemphieunhap = new System.Windows.Forms.Button();
             this.btnThoatphieunhap = new System.Windows.Forms.Button();
             this.btnInphieunhap = new System.Windows.Forms.Button();
-            this.btnSuaphieunhap = new System.Windows.Forms.Button();
             this.btnXoaphieunhap = new System.Windows.Forms.Button();
             this.btnLuuphieunhap = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -60,9 +59,9 @@
             this.cboMasach = new System.Windows.Forms.ComboBox();
             this.txtSoluong = new System.Windows.Forms.TextBox();
             this.lbldonvi = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTong = new System.Windows.Forms.TextBox();
             this.txtTensach = new System.Windows.Forms.TextBox();
-            this.DataGridView2 = new System.Windows.Forms.DataGridView();
+            this.datagridPhieuNhapSach = new System.Windows.Forms.DataGridView();
             this.lblTong = new System.Windows.Forms.Label();
             this.lblSoluong = new System.Windows.Forms.Label();
             this.lblTensach = new System.Windows.Forms.Label();
@@ -75,7 +74,7 @@
             this.grp1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridPhieuNhapSach)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -158,6 +157,7 @@
             this.cboTimkiemphieunhap.Name = "cboTimkiemphieunhap";
             this.cboTimkiemphieunhap.Size = new System.Drawing.Size(249, 24);
             this.cboTimkiemphieunhap.TabIndex = 1;
+            this.cboTimkiemphieunhap.DropDown += new System.EventHandler(this.cboTimkiemphieunhap_DropDown);
             // 
             // btnTimkiemphieunhap
             // 
@@ -170,7 +170,7 @@
             this.btnTimkiemphieunhap.TabIndex = 0;
             this.btnTimkiemphieunhap.Text = "Tìm kiếm";
             this.btnTimkiemphieunhap.UseVisualStyleBackColor = false;
-//            this.btnTimkiemphieunhap.Click += new System.EventHandler(this.btnTimkiemphieunhap_Click);
+            this.btnTimkiemphieunhap.Click += new System.EventHandler(this.btnTimkiemphieunhap_Click);
             // 
             // grp1
             // 
@@ -203,6 +203,7 @@
             this.cboManhanvien.Name = "cboManhanvien";
             this.cboManhanvien.Size = new System.Drawing.Size(328, 24);
             this.cboManhanvien.TabIndex = 7;
+            this.cboManhanvien.SelectedIndexChanged += new System.EventHandler(this.cboManhanvien_SelectedIndexChanged);
             // 
             // mskNgaynhap
             // 
@@ -266,12 +267,11 @@
             this.panel4.Controls.Add(this.btnThemphieunhap);
             this.panel4.Controls.Add(this.btnThoatphieunhap);
             this.panel4.Controls.Add(this.btnInphieunhap);
-            this.panel4.Controls.Add(this.btnSuaphieunhap);
             this.panel4.Controls.Add(this.btnXoaphieunhap);
             this.panel4.Controls.Add(this.btnLuuphieunhap);
-            this.panel4.Location = new System.Drawing.Point(25, 597);
+            this.panel4.Location = new System.Drawing.Point(72, 614);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(611, 125);
+            this.panel4.Size = new System.Drawing.Size(611, 116);
             this.panel4.TabIndex = 41;
             // 
             // btnThemphieunhap
@@ -281,74 +281,66 @@
             this.btnThemphieunhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemphieunhap.ForeColor = System.Drawing.Color.Teal;
             this.btnThemphieunhap.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThemphieunhap.Location = new System.Drawing.Point(22, 7);
+            this.btnThemphieunhap.Location = new System.Drawing.Point(6, 11);
             this.btnThemphieunhap.Name = "btnThemphieunhap";
             this.btnThemphieunhap.Size = new System.Drawing.Size(113, 36);
             this.btnThemphieunhap.TabIndex = 1;
             this.btnThemphieunhap.Text = "Thêm Mới";
             this.btnThemphieunhap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThemphieunhap.UseVisualStyleBackColor = false;
+            this.btnThemphieunhap.Click += new System.EventHandler(this.btnThemphieunhap_Click);
             // 
             // btnThoatphieunhap
             // 
             this.btnThoatphieunhap.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnThoatphieunhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoatphieunhap.ForeColor = System.Drawing.Color.Teal;
-            this.btnThoatphieunhap.Location = new System.Drawing.Point(24, 81);
+            this.btnThoatphieunhap.Location = new System.Drawing.Point(143, 81);
             this.btnThoatphieunhap.Name = "btnThoatphieunhap";
             this.btnThoatphieunhap.Size = new System.Drawing.Size(77, 32);
             this.btnThoatphieunhap.TabIndex = 6;
             this.btnThoatphieunhap.Text = "Thoát";
             this.btnThoatphieunhap.UseVisualStyleBackColor = false;
+            this.btnThoatphieunhap.Click += new System.EventHandler(this.btnThoatphieunhap_Click);
             // 
             // btnInphieunhap
             // 
             this.btnInphieunhap.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnInphieunhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInphieunhap.ForeColor = System.Drawing.Color.Teal;
-            this.btnInphieunhap.Location = new System.Drawing.Point(458, 81);
+            this.btnInphieunhap.Location = new System.Drawing.Point(367, 81);
             this.btnInphieunhap.Name = "btnInphieunhap";
-            this.btnInphieunhap.Size = new System.Drawing.Size(130, 32);
+            this.btnInphieunhap.Size = new System.Drawing.Size(111, 32);
             this.btnInphieunhap.TabIndex = 7;
             this.btnInphieunhap.Text = "In Phiếu";
             this.btnInphieunhap.UseVisualStyleBackColor = false;
-            // 
-            // btnSuaphieunhap
-            // 
-            this.btnSuaphieunhap.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnSuaphieunhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuaphieunhap.ForeColor = System.Drawing.Color.Teal;
-            this.btnSuaphieunhap.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSuaphieunhap.Location = new System.Drawing.Point(265, 81);
-            this.btnSuaphieunhap.Name = "btnSuaphieunhap";
-            this.btnSuaphieunhap.Size = new System.Drawing.Size(81, 32);
-            this.btnSuaphieunhap.TabIndex = 2;
-            this.btnSuaphieunhap.Text = "Sửa";
-            this.btnSuaphieunhap.UseVisualStyleBackColor = false;
+            this.btnInphieunhap.Click += new System.EventHandler(this.btnInphieunhap_Click);
             // 
             // btnXoaphieunhap
             // 
             this.btnXoaphieunhap.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnXoaphieunhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoaphieunhap.ForeColor = System.Drawing.Color.Teal;
-            this.btnXoaphieunhap.Location = new System.Drawing.Point(262, 7);
+            this.btnXoaphieunhap.Location = new System.Drawing.Point(242, 11);
             this.btnXoaphieunhap.Name = "btnXoaphieunhap";
-            this.btnXoaphieunhap.Size = new System.Drawing.Size(84, 32);
+            this.btnXoaphieunhap.Size = new System.Drawing.Size(102, 36);
             this.btnXoaphieunhap.TabIndex = 3;
             this.btnXoaphieunhap.Text = "Xoá";
             this.btnXoaphieunhap.UseVisualStyleBackColor = false;
+            this.btnXoaphieunhap.Click += new System.EventHandler(this.btnXoaphieunhap_Click);
             // 
             // btnLuuphieunhap
             // 
             this.btnLuuphieunhap.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnLuuphieunhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuphieunhap.ForeColor = System.Drawing.Color.Teal;
-            this.btnLuuphieunhap.Location = new System.Drawing.Point(458, 5);
+            this.btnLuuphieunhap.Location = new System.Drawing.Point(497, 11);
             this.btnLuuphieunhap.Name = "btnLuuphieunhap";
-            this.btnLuuphieunhap.Size = new System.Drawing.Size(76, 32);
+            this.btnLuuphieunhap.Size = new System.Drawing.Size(76, 36);
             this.btnLuuphieunhap.TabIndex = 4;
             this.btnLuuphieunhap.Text = "Lưu";
             this.btnLuuphieunhap.UseVisualStyleBackColor = false;
+            this.btnLuuphieunhap.Click += new System.EventHandler(this.btnLuuphieunhap_Click);
             // 
             // groupBox1
             // 
@@ -357,9 +349,9 @@
             this.groupBox1.Controls.Add(this.cboMasach);
             this.groupBox1.Controls.Add(this.txtSoluong);
             this.groupBox1.Controls.Add(this.lbldonvi);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtTong);
             this.groupBox1.Controls.Add(this.txtTensach);
-            this.groupBox1.Controls.Add(this.DataGridView2);
+            this.groupBox1.Controls.Add(this.datagridPhieuNhapSach);
             this.groupBox1.Controls.Add(this.lblTong);
             this.groupBox1.Controls.Add(this.lblSoluong);
             this.groupBox1.Controls.Add(this.lblTensach);
@@ -395,6 +387,7 @@
             this.cboMasach.Name = "cboMasach";
             this.cboMasach.Size = new System.Drawing.Size(328, 24);
             this.cboMasach.TabIndex = 9;
+            this.cboMasach.SelectedIndexChanged += new System.EventHandler(this.cboMasach_SelectedIndexChanged);
             // 
             // txtSoluong
             // 
@@ -412,12 +405,12 @@
             this.lbldonvi.TabIndex = 42;
             this.lbldonvi.Text = "Quyển";
             // 
-            // textBox1
+            // txtTong
             // 
-            this.textBox1.Location = new System.Drawing.Point(457, 516);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(55, 22);
-            this.textBox1.TabIndex = 41;
+            this.txtTong.Location = new System.Drawing.Point(457, 516);
+            this.txtTong.Name = "txtTong";
+            this.txtTong.Size = new System.Drawing.Size(55, 22);
+            this.txtTong.TabIndex = 41;
             // 
             // txtTensach
             // 
@@ -426,16 +419,17 @@
             this.txtTensach.Size = new System.Drawing.Size(328, 22);
             this.txtTensach.TabIndex = 9;
             // 
-            // DataGridView2
+            // datagridPhieuNhapSach
             // 
-            this.DataGridView2.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView2.Location = new System.Drawing.Point(33, 236);
-            this.DataGridView2.Name = "DataGridView2";
-            this.DataGridView2.RowHeadersWidth = 51;
-            this.DataGridView2.RowTemplate.Height = 24;
-            this.DataGridView2.Size = new System.Drawing.Size(549, 254);
-            this.DataGridView2.TabIndex = 40;
+            this.datagridPhieuNhapSach.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.datagridPhieuNhapSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridPhieuNhapSach.Location = new System.Drawing.Point(33, 236);
+            this.datagridPhieuNhapSach.Name = "datagridPhieuNhapSach";
+            this.datagridPhieuNhapSach.RowHeadersWidth = 51;
+            this.datagridPhieuNhapSach.RowTemplate.Height = 24;
+            this.datagridPhieuNhapSach.Size = new System.Drawing.Size(549, 254);
+            this.datagridPhieuNhapSach.TabIndex = 40;
+            this.datagridPhieuNhapSach.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridPhieuNhapSach_CellDoubleClick);
             // 
             // lblTong
             // 
@@ -445,7 +439,6 @@
             this.lblTong.Size = new System.Drawing.Size(45, 16);
             this.lblTong.TabIndex = 3;
             this.lblTong.Text = "Tổng: ";
-          //  this.lblTong.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblSoluong
             // 
@@ -503,7 +496,7 @@
             this.panel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridPhieuNhapSach)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -523,7 +516,6 @@
         private System.Windows.Forms.Button btnThemphieunhap;
         private System.Windows.Forms.Button btnThoatphieunhap;
         private System.Windows.Forms.Button btnInphieunhap;
-        private System.Windows.Forms.Button btnSuaphieunhap;
         private System.Windows.Forms.Button btnXoaphieunhap;
         private System.Windows.Forms.Button btnLuuphieunhap;
         private System.Windows.Forms.Label lblTennhanvien;
@@ -539,9 +531,9 @@
         private System.Windows.Forms.Label lblSoluong;
         private System.Windows.Forms.Label lblTensach;
         private System.Windows.Forms.Label lblMasach;
-        private System.Windows.Forms.DataGridView DataGridView2;
+        private System.Windows.Forms.DataGridView datagridPhieuNhapSach;
         private System.Windows.Forms.Label lbldonvi;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTong;
         private System.Windows.Forms.TextBox txtTensach;
         private System.Windows.Forms.TextBox txtGhichu;
         private System.Windows.Forms.Label lblGhichu;

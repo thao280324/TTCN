@@ -48,6 +48,8 @@
             this.btnDuyet = new System.Windows.Forms.Button();
             this.btnKhongduyet = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTrangthaiduyet = new System.Windows.Forms.TextBox();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
@@ -108,7 +110,6 @@
             this.label6.Size = new System.Drawing.Size(612, 29);
             this.label6.TabIndex = 3;
             this.label6.Text = "Phần mềm quản lý sách-Thư viện D FREE BOOK";
-          //  this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label1
             // 
@@ -138,6 +139,8 @@
             this.cboChonphieu.Name = "cboChonphieu";
             this.cboChonphieu.Size = new System.Drawing.Size(229, 24);
             this.cboChonphieu.TabIndex = 11;
+            this.cboChonphieu.DropDown += new System.EventHandler(this.cboChonphieu_DropDown);
+            this.cboChonphieu.SelectedIndexChanged += new System.EventHandler(this.cboChonphieu_SelectedIndexChanged);
             // 
             // lblMa
             // 
@@ -210,7 +213,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(703, 220);
+            this.dataGridView1.Location = new System.Drawing.Point(697, 186);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -229,6 +232,7 @@
             this.btnDuyet.TabIndex = 15;
             this.btnDuyet.Text = "DUYỆT";
             this.btnDuyet.UseVisualStyleBackColor = false;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // btnKhongduyet
             // 
@@ -242,6 +246,7 @@
             this.btnKhongduyet.TabIndex = 16;
             this.btnKhongduyet.Text = "KHÔNG DUYỆT";
             this.btnKhongduyet.UseVisualStyleBackColor = false;
+            this.btnKhongduyet.Click += new System.EventHandler(this.btnKhongduyet_Click);
             // 
             // btnThoat
             // 
@@ -255,12 +260,32 @@
             this.btnThoat.TabIndex = 17;
             this.btnThoat.Text = "THOÁT";
             this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(788, 452);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Trạng thái :";
+            // 
+            // txtTrangthaiduyet
+            // 
+            this.txtTrangthaiduyet.Location = new System.Drawing.Point(937, 446);
+            this.txtTrangthaiduyet.Name = "txtTrangthaiduyet";
+            this.txtTrangthaiduyet.Size = new System.Drawing.Size(153, 22);
+            this.txtTrangthaiduyet.TabIndex = 19;
             // 
             // Duyetyeucau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1324, 618);
+            this.Controls.Add(this.txtTrangthaiduyet);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnKhongduyet);
             this.Controls.Add(this.btnDuyet);
@@ -283,6 +308,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -306,5 +332,7 @@
         private System.Windows.Forms.Button btnDuyet;
         private System.Windows.Forms.Button btnKhongduyet;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTrangthaiduyet;
     }
 }

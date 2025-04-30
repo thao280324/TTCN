@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using thutap.Class;
 
 namespace thutap
 {
@@ -22,22 +23,106 @@ namespace thutap
         private void Duyetyeucau_Load(object sender, EventArgs e)
         {
             PhanQuyenChucNang();
+            //Cập nhật dữ liệu vào cboChonphieu chỉ hiển thị phiếu có trạng thái "Đã gửi"
+            string sql = "SELECT Maphieuyeucaunhap FROM yeucaunhap WHERE Trangthaigui = N'Đã gửi' AND Trangthaiduyet = N'Chưa duyệt'";
+            function.FillCombo2(sql, cboChonphieu, "Maphieuyeucaunhap", "Maphieuyeucaunhap");
+            cboChonphieu.SelectedIndex = -1;
+            txtManhanvien.Enabled = false;
+            txtMaphieu.Enabled = false;
+            mskNgay.Enabled = false;
         }
         private void PhanQuyenChucNang()
         {
             if (vaiTro == "Nhân viên thủ thư")
             {
-                //phân quyền
+                MessageBox.Show("Bạn không có quyền truy cập vào form Phiếu Phục Chế.");
+                this.Close();
             }
             else if (vaiTro == "Phó ban thủ thư")
-            {
-                //phân quyền
-            }
-            else
             {
                 MessageBox.Show("Bạn không có quyền truy cập vào form Phiếu Phục Chế.");
                 this.Close();
             }
+            else
+            {
+                //phân quyền
+            }
+        }
+
+        private void cboChonphieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboChonphieu.SelectedIndex != -1)
+            {
+                // Lấy Mã phiếu đã chọn
+                string maphieu = cboChonphieu.SelectedValue.ToString();
+
+                // Hiển thị các thông tin của phiếu vào các textbox
+                string sql = "SELECT * FROM yeucaunhap WHERE Maphieuyeucaunhap = N'" + maphieu + "'";
+                DataTable dt = function.GetDataToTable(sql);
+                if (dt.Rows.Count > 0)
+                {
+                    txtMaphieu.Text = dt.Rows[0]["Maphieuyeucaunhap"].ToString();
+                    mskNgay.Text = dt.Rows[0]["Ngaylap"].ToString();
+                    string manv = dt.Rows[0]["Manhanvien"].ToString();
+                    txtManhanvien.Text = manv;
+                    // Cập nhật thông tin sách vào DataGridView
+                    Load_DataGridViewChitiet(maphieu);
+                }
+            }
+        }
+        private void Load_DataGridViewChitiet(string maphieu)
+        {
+            string sql = "SELECT a.Masach, b.Tensach, a.Soluong " +
+                         "FROM chitietyeucaunhap a " +
+                         "JOIN sach b ON a.Masach = b.Masach " +
+                         "WHERE a.Maphieuyeucaunhap = N'" + maphieu + "'";
+            DataTable dt = function.GetDataToTable(sql);
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns[0].HeaderText = "Mã sách";
+            dataGridView1.Columns[1].HeaderText = "Tên sách";
+            dataGridView1.Columns[2].HeaderText = "Số lượng";
+        }
+
+        private void btnDuyet_Click(object sender, EventArgs e)
+        {
+            string maphieu = txtMaphieu.Text;
+            string sql = "UPDATE yeucaunhap SET Trangthaiduyet = N'Đã duyệt' WHERE Maphieuyeucaunhap = N'" + maphieu + "'";
+            function.RunSql(sql);
+            MessageBox.Show("Phiếu đã được duyệt!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Sau khi duyệt, cập nhật lại trạng thái
+            txtTrangthaiduyet.Text = "Đã duyệt";
+            btnKhongduyet.Enabled = false;
+        }
+
+        private void btnKhongduyet_Click(object sender, EventArgs e)
+        {
+            string maphieu = txtMaphieu.Text;
+            string sql = "UPDATE yeucaunhap SET Trangthaiduyet = N'Chưa duyệt' WHERE Maphieuyeucaunhap = N'" + maphieu + "'";
+            function.RunSql(sql);
+            MessageBox.Show("Phiếu không được duyệt!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Sau khi không duyệt, cập nhật lại trạng thái
+            txtTrangthaiduyet.Text = "Chưa duyệt";
+            
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+       "Bạn đang thao tác trên dữ liệu.\nNếu bạn đóng lại bây giờ, mọi thay đổi chưa lưu sẽ bị mất.\n\nBạn có chắc chắn muốn thoát không?",
+       "Xác nhận thoát",
+       MessageBoxButtons.YesNo,
+       MessageBoxIcon.Question
+   );
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void cboChonphieu_DropDown(object sender, EventArgs e)
+        {
+
         }
     }
 }
