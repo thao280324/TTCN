@@ -56,10 +56,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 172);
+            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(21, 173);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(711, 92);
+            this.label1.Size = new System.Drawing.Size(660, 84);
             this.label1.TabIndex = 0;
             this.label1.Text = "        CHƯƠNG TRÌNH QUẢN LÝ\r\nSÁCH CỦA THƯ VIỆN D FREE BOOK";
             // 
@@ -203,7 +203,7 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(0, 413);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(773, 36);
+            this.panel1.Size = new System.Drawing.Size(801, 36);
             this.panel1.TabIndex = 2;
             // 
             // label6
@@ -223,6 +223,7 @@
             this.txtTendangnhap.Name = "txtTendangnhap";
             this.txtTendangnhap.Size = new System.Drawing.Size(135, 22);
             this.txtTendangnhap.TabIndex = 3;
+            this.txtTendangnhap.DoubleClick += new System.EventHandler(this.txtTendangnhap_DoubleClick);
             // 
             // FrmMain
             // 

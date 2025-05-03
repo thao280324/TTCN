@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,28 +31,49 @@ namespace thutap
         }
         private void PhanQuyenNguoiDung()
         {
-            // Ẩn tất cả menu trước
-            AnTatCaMenu();
 
             string vtro = vaiTro.Trim();  // Loại bỏ khoảng trắng
 
+            // Quản lý menu phân quyền cho từng vai trò
             if (vtro == "Nhân viên thủ thư")
             {
-                HienThiTatCaMenu();
-                menuPheDuyetPhieuYeuCau.Visible = false;
+                HienThiTatCaMenu(); // Hiển thị tất cả các menu
+                menuPheDuyetPhieuYeuCau.Visible = false;  // Nhân viên không thể xem form Phê duyệt phiếu yêu cầu
             }
             else if (vtro == "Phó ban thủ thư")
             {
                 HienThiTatCaMenu();
+                // Phó ban chỉ được phép thao tác với tìm kiếm, in phiếu
+                menuPhieuMuon.Visible = true;    // Không thêm sửa xóa phiếu
+                menuPhieuTra.Visible = true;     // Không thêm sửa xóa phiếu
+                menuPhieuNhap.Visible = true;    // Không thêm sửa xóa phiếu
+                menuPhieuKiemKe.Visible = true; // Không thêm sửa xóa phiếu
+                menuPhieuPhucChe.Visible =true;// Không thêm sửa xóa phiếu
+                menuBaoCaoSoLuongNhap.Visible = true;
+                menuBaoCaoUaThich.Visible = true;
+                menuQuanLySach.Visible = true;
+                menuTheThanhVien.Visible = true;
+
+                // Các form còn lại như tìm kiếm, in thì vẫn cho phép
                 menuPhieuYeuCauNhap.Visible = false;
-                menuPheDuyetPhieuYeuCau.Visible = false;
+                menuPheDuyetPhieuYeuCau.Visible = false;  // Không có quyền phê duyệt
             }
             else if (vtro == "Trưởng ban thủ thư")
             {
-                AnTatCaMenu();
-                menuPheDuyetPhieuYeuCau.Visible = true;
+                menuPheDuyetPhieuYeuCau.Visible = true; // Trưởng ban có quyền duyệt phiếu
                 menuBaoCaoSoLuongNhap.Visible = true;
                 menuBaoCaoUaThich.Visible = true;
+                menuQuanLySach.Visible = true;
+                menuTheThanhVien.Visible = true;
+
+                // Trưởng ban chỉ có quyền xem báo cáo và duyệt phiếu yêu cầu
+                menuPhieuMuon.Enabled = false;    // Không thao tác phiếu
+                menuPhieuTra.Enabled = false;     // Không thao tác phiếu
+                menuPhieuNhap.Enabled = false;    // Không thao tác phiếu
+                menuPhieuKiemKe.Enabled = false; // Không thao tác phiếu
+                menuPhieuPhucChe.Enabled = false;// Không thao tác phiếu
+                menuPhieuYeuCauNhap.Enabled = false;
+
             }
             else
             {
@@ -59,22 +81,9 @@ namespace thutap
                 this.Close();
             }
         }
-        private void AnTatCaMenu()
-        {
-            menuQuanLySach.Visible = false;
-            menuTheThanhVien.Visible = false;
-            menuPhieuMuon.Visible = false;
-            menuPhieuTra.Visible = false;
-            menuPhieuNhap.Visible = false;
-            menuPhieuKiemKe.Visible = false;
-            menuPhieuPhucChe.Visible = false;
-            menuPhieuYeuCauNhap.Visible = false;
-            menuPheDuyetPhieuYeuCau.Visible = false;
-            menuBaoCaoSoLuongNhap.Visible = false;
-            menuBaoCaoUaThich.Visible = false;
-        }
         private void HienThiTatCaMenu()
         {
+            // Hiển thị tất cả menu khi là Nhân viên hoặc Phó ban
             menuQuanLySach.Visible = true;
             menuTheThanhVien.Visible = true;
             menuPhieuMuon.Visible = true;
@@ -85,6 +94,7 @@ namespace thutap
             menuPhieuYeuCauNhap.Visible = true;
             menuBaoCaoSoLuongNhap.Visible = true;
             menuBaoCaoUaThich.Visible = true;
+            menuPheDuyetPhieuYeuCau.Visible = false;
         }
 
         private void menuQuanLySach_Click(object sender, EventArgs e)
@@ -151,6 +161,32 @@ namespace thutap
         {
             Duyetyeucau frm = new Duyetyeucau(vaiTro);
             frm.ShowDialog();
+        }
+
+        private void txtTendangnhap_DoubleClick(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát và quay lại trang đăng nhập không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // Đóng Trang chủ (FormMain)
+                this.Hide();
+
+                // Mở FormDangNhap trong một Thread mới
+                Thread thread = new Thread(new ThreadStart(OpenDangNhapForm));
+                thread.Start();
+            }
+            else
+            {
+                // Không làm gì, ở lại trang chủ
+                return;
+            }
+
+        }
+        private void OpenDangNhapForm()
+        {
+            // Mở lại FormDangNhap sau khi đóng FormMain
+            Application.Run(new Dangnhap());
         }
     }
 }

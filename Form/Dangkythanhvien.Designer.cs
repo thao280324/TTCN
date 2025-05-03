@@ -53,10 +53,10 @@
             this.rdoNam = new System.Windows.Forms.RadioButton();
             this.rdoNu = new System.Windows.Forms.RadioButton();
             this.mskNgay = new System.Windows.Forms.MaskedTextBox();
-            this.mskSdt = new System.Windows.Forms.MaskedTextBox();
             this.txtMadocgia = new System.Windows.Forms.TextBox();
             this.txtTendocgia = new System.Windows.Forms.TextBox();
             this.DataGridView2 = new System.Windows.Forms.DataGridView();
+            this.txtSodienthoai = new System.Windows.Forms.TextBox();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
@@ -128,14 +128,15 @@
             this.btnTimkiemthe.TabIndex = 0;
             this.btnTimkiemthe.Text = "Tìm kiếm";
             this.btnTimkiemthe.UseVisualStyleBackColor = false;
+            this.btnTimkiemthe.Click += new System.EventHandler(this.btnTimkiemthe_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Turquoise;
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 601);
+            this.panel1.Location = new System.Drawing.Point(0, 632);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1300, 51);
+            this.panel1.Size = new System.Drawing.Size(1340, 51);
             this.panel1.TabIndex = 5;
             // 
             // label1
@@ -177,6 +178,7 @@
             this.btnThemthe.Text = "Thêm";
             this.btnThemthe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThemthe.UseVisualStyleBackColor = false;
+            this.btnThemthe.Click += new System.EventHandler(this.btnThemthe_Click);
             // 
             // btnThoatthe
             // 
@@ -189,6 +191,7 @@
             this.btnThoatthe.TabIndex = 6;
             this.btnThoatthe.Text = "Thoát";
             this.btnThoatthe.UseVisualStyleBackColor = false;
+            this.btnThoatthe.Click += new System.EventHandler(this.btnThoatthe_Click);
             // 
             // btnInthe
             // 
@@ -201,6 +204,7 @@
             this.btnInthe.TabIndex = 7;
             this.btnInthe.Text = "In danh sách";
             this.btnInthe.UseVisualStyleBackColor = false;
+            this.btnInthe.Click += new System.EventHandler(this.btnInthe_Click);
             // 
             // btnSuathe
             // 
@@ -214,6 +218,7 @@
             this.btnSuathe.TabIndex = 2;
             this.btnSuathe.Text = "Sửa";
             this.btnSuathe.UseVisualStyleBackColor = false;
+            this.btnSuathe.Click += new System.EventHandler(this.btnSuathe_Click);
             // 
             // btnXoathe
             // 
@@ -226,6 +231,7 @@
             this.btnXoathe.TabIndex = 3;
             this.btnXoathe.Text = "Xoá";
             this.btnXoathe.UseVisualStyleBackColor = false;
+            this.btnXoathe.Click += new System.EventHandler(this.btnXoathe_Click);
             // 
             // btnBoquathe
             // 
@@ -238,6 +244,7 @@
             this.btnBoquathe.TabIndex = 5;
             this.btnBoquathe.Text = "Bỏ qua";
             this.btnBoquathe.UseVisualStyleBackColor = false;
+            this.btnBoquathe.Click += new System.EventHandler(this.btnBoquathe_Click);
             // 
             // btnLuuthe
             // 
@@ -250,12 +257,13 @@
             this.btnLuuthe.TabIndex = 4;
             this.btnLuuthe.Text = "Lưu";
             this.btnLuuthe.UseVisualStyleBackColor = false;
+            this.btnLuuthe.Click += new System.EventHandler(this.btnLuuthe_Click);
             // 
             // lblTen
             // 
             this.lblTen.AutoSize = true;
             this.lblTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTen.Location = new System.Drawing.Point(274, 309);
+            this.lblTen.Location = new System.Drawing.Point(274, 306);
             this.lblTen.Name = "lblTen";
             this.lblTen.Size = new System.Drawing.Size(102, 16);
             this.lblTen.TabIndex = 26;
@@ -327,19 +335,11 @@
             // mskNgay
             // 
             this.mskNgay.Location = new System.Drawing.Point(406, 517);
-            this.mskNgay.Mask = "00/00/0000 90:00";
+            this.mskNgay.Mask = "00/00/0000";
             this.mskNgay.Name = "mskNgay";
             this.mskNgay.Size = new System.Drawing.Size(100, 22);
             this.mskNgay.TabIndex = 33;
             this.mskNgay.ValidatingType = typeof(System.DateTime);
-            // 
-            // mskSdt
-            // 
-            this.mskSdt.Location = new System.Drawing.Point(406, 469);
-            this.mskSdt.Mask = "000-0000";
-            this.mskSdt.Name = "mskSdt";
-            this.mskSdt.Size = new System.Drawing.Size(100, 22);
-            this.mskSdt.TabIndex = 34;
             // 
             // txtMadocgia
             // 
@@ -365,6 +365,14 @@
             this.DataGridView2.RowTemplate.Height = 24;
             this.DataGridView2.Size = new System.Drawing.Size(496, 297);
             this.DataGridView2.TabIndex = 38;
+            this.DataGridView2.Click += new System.EventHandler(this.DataGridView2_Click);
+            // 
+            // txtSodienthoai
+            // 
+            this.txtSodienthoai.Location = new System.Drawing.Point(394, 466);
+            this.txtSodienthoai.Name = "txtSodienthoai";
+            this.txtSodienthoai.Size = new System.Drawing.Size(170, 22);
+            this.txtSodienthoai.TabIndex = 39;
             // 
             // Dangkythanhvien
             // 
@@ -372,10 +380,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1340, 683);
+            this.Controls.Add(this.txtSodienthoai);
             this.Controls.Add(this.DataGridView2);
             this.Controls.Add(this.txtTendocgia);
             this.Controls.Add(this.txtMadocgia);
-            this.Controls.Add(this.mskSdt);
             this.Controls.Add(this.mskNgay);
             this.Controls.Add(this.rdoNu);
             this.Controls.Add(this.rdoNam);
@@ -429,9 +437,9 @@
         private System.Windows.Forms.RadioButton rdoNam;
         private System.Windows.Forms.RadioButton rdoNu;
         private System.Windows.Forms.MaskedTextBox mskNgay;
-        private System.Windows.Forms.MaskedTextBox mskSdt;
         private System.Windows.Forms.TextBox txtMadocgia;
         private System.Windows.Forms.TextBox txtTendocgia;
         private System.Windows.Forms.DataGridView DataGridView2;
+        private System.Windows.Forms.TextBox txtSodienthoai;
     }
 }

@@ -21,18 +21,7 @@ namespace thutap
 
         private void Baocaonhapsach_Load(object sender, EventArgs e)
         {
-            if (vaiTro == "Phó ban thủ thư")
-            {
-                //phân quyền
-            }
-            else if (vaiTro == "Trưởng ban thủ thư")
-            {
-                //phân quyền
-            }
-            else
-            {
-                //phân quyền
-            }
+           
         }
     }
 }

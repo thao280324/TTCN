@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+
 
 namespace thutap.Class
 {
@@ -32,31 +34,54 @@ namespace thutap.Class
         }
         public static DataTable GetDataToTable(string sql)
         {
-            SqlDataAdapter Mydata = new SqlDataAdapter();
-            Mydata.SelectCommand = new SqlCommand();
-            Mydata.SelectCommand.Connection = function.Conn;
-            Mydata.SelectCommand.CommandText = sql;
+            //Kiểm tra kết nối, nếu chưa kết nối thì thực hiện kết nối
+    if (function.Conn == null)
+            {
+                function.Conn = new SqlConnection("Data Source=DESKTOP-IK88KCU;Initial Catalog=thuvien;Integrated Security=True;TrustServerCertificate=True;");
+            }
+
+            // Kiểm tra nếu kết nối chưa mở thì mở kết nối
+            if (function.Conn.State == ConnectionState.Closed)
+            {
+                function.Conn.Open();
+            }
+
+            // Tạo đối tượng SqlDataAdapter
+            SqlDataAdapter Mydata = new SqlDataAdapter(sql, function.Conn);
+
+            // Tạo bảng DataTable để lưu trữ dữ liệu từ SQL query
             DataTable table = new DataTable();
+
+            // Điền dữ liệu vào DataTable từ SqlDataAdapter
             Mydata.Fill(table);
+
+            // Trả về DataTable
             return table;
 
+
         }
-        public static void RunSql(string sql)
+        public static void RunSql(string sql, SqlParameter[] parameters = null)
         {
-            SqlCommand cmd;
-            cmd = new SqlCommand();
-            cmd.Connection = Class.function.Conn;
-            cmd.CommandText = sql;
+            SqlCommand cmd = new SqlCommand(sql, Conn);
+            if (parameters != null)
+            {
+                cmd.Parameters.AddRange(parameters);
+            }
             try
             {
+                if (Conn.State != ConnectionState.Open)
+                    Conn.Open();
+
                 cmd.ExecuteNonQuery();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message, "Lỗi truy vấn SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            cmd.Dispose();
-            cmd = null;
+            finally
+            {
+                cmd.Dispose();
+            }
         }
         public static void FillCombo(string sql, ComboBox cbo, string ma)
         {
@@ -74,16 +99,6 @@ namespace thutap.Class
             cbo.DataSource = table;
             cbo.ValueMember = ma;
             cbo.DisplayMember = ma;
-        }
-        public static void FillCombo1(string sql, ComboBox cbo, string ma, string ten)
-        {
-            SqlDataAdapter Mydata = new SqlDataAdapter(sql, function.Conn);
-            DataTable table = new DataTable();
-            Mydata.Fill(table);
-            cbo.DataSource = table;
-
-            cbo.ValueMember = ma;    // Truong gia tri
-            cbo.DisplayMember = ten;    // Truong hien thi
         }
         public static string GetFieldValues(string sql)
         {
@@ -119,7 +134,8 @@ namespace thutap.Class
         public static string ConvertDateTime(string d)
         {
             string[] parts = d.Split('/');
-            string dt = String.Format("{0}/{1}/{2}", parts[1], parts[0], parts[2]);
+            // yyyy-MM-dd  
+            string dt = String.Format("{0}-{1}-{2}", parts[2], parts[1], parts[0]);
             return dt;
         }
         public static double? GetFieldValues1(string sql)
@@ -224,5 +240,53 @@ namespace thutap.Class
             }
             return h;
         }
+        public static List<string> GetFieldValuesMultiple(string sql)
+        {
+            List<string> values = new List<string>();
+            SqlCommand cmd = new SqlCommand(sql, function.Conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                // Lấy tất cả các giá trị trong dòng, bạn có thể thay đổi chỉ số GetValue tùy vào số lượng cột
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    values.Add(reader.GetValue(i).ToString());
+                }
+            }
+
+            reader.Close();
+            return values;
+        }
+        public static string GetFieldValuesWithParams(string sql, params SqlParameter[] parameters)
+        {
+            string result = "";
+            using (SqlCommand cmd = new SqlCommand(sql, function.Conn))
+            {
+                cmd.Parameters.AddRange(parameters);
+
+                try
+                {
+                    function.Conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        result = reader.GetValue(0).ToString();
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi truy vấn: " + ex.Message);
+                }
+                finally
+                {
+                    function.Conn.Close();
+                }
+            }
+            return result;
+        }
+
+
     }
 }

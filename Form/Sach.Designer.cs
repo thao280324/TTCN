@@ -47,8 +47,8 @@
             this.btnXoasach = new System.Windows.Forms.Button();
             this.btnBoquasach = new System.Windows.Forms.Button();
             this.btnLuusach = new System.Windows.Forms.Button();
-            this.DataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtGhichu = new System.Windows.Forms.TextBox();
+            this.DataGridView = new System.Windows.Forms.DataGridView();
+            this.txtMota = new System.Windows.Forms.TextBox();
             this.txtSoluong = new System.Windows.Forms.TextBox();
             this.txtGiabia = new System.Windows.Forms.TextBox();
             this.txtSotrang = new System.Windows.Forms.TextBox();
@@ -71,7 +71,7 @@
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,8 +115,8 @@
             this.panel1.Controls.Add(this.cboManxb);
             this.panel1.Controls.Add(this.cboMatheloai);
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.DataGridView1);
-            this.panel1.Controls.Add(this.txtGhichu);
+            this.panel1.Controls.Add(this.DataGridView);
+            this.panel1.Controls.Add(this.txtMota);
             this.panel1.Controls.Add(this.txtSoluong);
             this.panel1.Controls.Add(this.txtGiabia);
             this.panel1.Controls.Add(this.txtSotrang);
@@ -167,29 +167,30 @@
             this.btnTimkiem.TabIndex = 0;
             this.btnTimkiem.Text = "Tìm kiếm";
             this.btnTimkiem.UseVisualStyleBackColor = false;
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
             // 
             // cboMatacgia
             // 
             this.cboMatacgia.FormattingEnabled = true;
-            this.cboMatacgia.Location = new System.Drawing.Point(631, 93);
+            this.cboMatacgia.Location = new System.Drawing.Point(660, 93);
             this.cboMatacgia.Name = "cboMatacgia";
-            this.cboMatacgia.Size = new System.Drawing.Size(229, 24);
+            this.cboMatacgia.Size = new System.Drawing.Size(200, 24);
             this.cboMatacgia.TabIndex = 27;
             // 
             // cboManxb
             // 
             this.cboManxb.FormattingEnabled = true;
-            this.cboManxb.Location = new System.Drawing.Point(631, 142);
+            this.cboManxb.Location = new System.Drawing.Point(660, 142);
             this.cboManxb.Name = "cboManxb";
-            this.cboManxb.Size = new System.Drawing.Size(229, 24);
+            this.cboManxb.Size = new System.Drawing.Size(200, 24);
             this.cboManxb.TabIndex = 26;
             // 
             // cboMatheloai
             // 
             this.cboMatheloai.FormattingEnabled = true;
-            this.cboMatheloai.Location = new System.Drawing.Point(287, 193);
+            this.cboMatheloai.Location = new System.Drawing.Point(301, 193);
             this.cboMatheloai.Name = "cboMatheloai";
-            this.cboMatheloai.Size = new System.Drawing.Size(182, 24);
+            this.cboMatheloai.Size = new System.Drawing.Size(168, 24);
             this.cboMatheloai.TabIndex = 25;
             // 
             // panel4
@@ -204,7 +205,7 @@
             this.panel4.Controls.Add(this.btnLuusach);
             this.panel4.Location = new System.Drawing.Point(12, 88);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(173, 330);
+            this.panel4.Size = new System.Drawing.Size(182, 330);
             this.panel4.TabIndex = 23;
             // 
             // btnThemsach
@@ -214,37 +215,40 @@
             this.btnThemsach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemsach.ForeColor = System.Drawing.Color.Teal;
             this.btnThemsach.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThemsach.Location = new System.Drawing.Point(37, 3);
+            this.btnThemsach.Location = new System.Drawing.Point(18, 0);
             this.btnThemsach.Name = "btnThemsach";
             this.btnThemsach.Size = new System.Drawing.Size(84, 36);
             this.btnThemsach.TabIndex = 1;
             this.btnThemsach.Text = "Thêm";
             this.btnThemsach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThemsach.UseVisualStyleBackColor = false;
+            this.btnThemsach.Click += new System.EventHandler(this.btnThemsach_Click);
             // 
             // btnThoatsach
             // 
             this.btnThoatsach.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnThoatsach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoatsach.ForeColor = System.Drawing.Color.Teal;
-            this.btnThoatsach.Location = new System.Drawing.Point(37, 295);
+            this.btnThoatsach.Location = new System.Drawing.Point(18, 286);
             this.btnThoatsach.Name = "btnThoatsach";
             this.btnThoatsach.Size = new System.Drawing.Size(77, 32);
             this.btnThoatsach.TabIndex = 6;
             this.btnThoatsach.Text = "Thoát";
             this.btnThoatsach.UseVisualStyleBackColor = false;
+            this.btnThoatsach.Click += new System.EventHandler(this.btnThoatsach_Click);
             // 
             // btnInsach
             // 
             this.btnInsach.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnInsach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsach.ForeColor = System.Drawing.Color.Teal;
-            this.btnInsach.Location = new System.Drawing.Point(37, 240);
+            this.btnInsach.Location = new System.Drawing.Point(18, 231);
             this.btnInsach.Name = "btnInsach";
             this.btnInsach.Size = new System.Drawing.Size(130, 32);
             this.btnInsach.TabIndex = 7;
             this.btnInsach.Text = "In danh sách";
             this.btnInsach.UseVisualStyleBackColor = false;
+            this.btnInsach.Click += new System.EventHandler(this.btnInsach_Click);
             // 
             // btnSuasach
             // 
@@ -252,72 +256,77 @@
             this.btnSuasach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuasach.ForeColor = System.Drawing.Color.Teal;
             this.btnSuasach.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSuasach.Location = new System.Drawing.Point(37, 45);
+            this.btnSuasach.Location = new System.Drawing.Point(18, 42);
             this.btnSuasach.Name = "btnSuasach";
             this.btnSuasach.Size = new System.Drawing.Size(81, 32);
             this.btnSuasach.TabIndex = 2;
             this.btnSuasach.Text = "Sửa";
             this.btnSuasach.UseVisualStyleBackColor = false;
+            this.btnSuasach.Click += new System.EventHandler(this.btnSuasach_Click);
             // 
             // btnXoasach
             // 
             this.btnXoasach.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnXoasach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoasach.ForeColor = System.Drawing.Color.Teal;
-            this.btnXoasach.Location = new System.Drawing.Point(37, 92);
+            this.btnXoasach.Location = new System.Drawing.Point(18, 83);
             this.btnXoasach.Name = "btnXoasach";
             this.btnXoasach.Size = new System.Drawing.Size(84, 32);
             this.btnXoasach.TabIndex = 3;
             this.btnXoasach.Text = "Xoá";
             this.btnXoasach.UseVisualStyleBackColor = false;
+            this.btnXoasach.Click += new System.EventHandler(this.btnXoasach_Click);
             // 
             // btnBoquasach
             // 
             this.btnBoquasach.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnBoquasach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBoquasach.ForeColor = System.Drawing.Color.Teal;
-            this.btnBoquasach.Location = new System.Drawing.Point(37, 186);
+            this.btnBoquasach.Location = new System.Drawing.Point(18, 177);
             this.btnBoquasach.Name = "btnBoquasach";
             this.btnBoquasach.Size = new System.Drawing.Size(103, 32);
             this.btnBoquasach.TabIndex = 5;
             this.btnBoquasach.Text = "Bỏ qua";
             this.btnBoquasach.UseVisualStyleBackColor = false;
+            this.btnBoquasach.Click += new System.EventHandler(this.btnBoquasach_Click);
             // 
             // btnLuusach
             // 
             this.btnLuusach.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnLuusach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuusach.ForeColor = System.Drawing.Color.Teal;
-            this.btnLuusach.Location = new System.Drawing.Point(37, 138);
+            this.btnLuusach.Location = new System.Drawing.Point(18, 130);
             this.btnLuusach.Name = "btnLuusach";
             this.btnLuusach.Size = new System.Drawing.Size(76, 32);
             this.btnLuusach.TabIndex = 4;
             this.btnLuusach.Text = "Lưu";
             this.btnLuusach.UseVisualStyleBackColor = false;
+            this.btnLuusach.Click += new System.EventHandler(this.btnLuusach_Click);
             // 
-            // DataGridView1
+            // DataGridView
             // 
-            this.DataGridView1.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView1.Location = new System.Drawing.Point(194, 250);
-            this.DataGridView1.Name = "DataGridView1";
-            this.DataGridView1.RowHeadersWidth = 51;
-            this.DataGridView1.RowTemplate.Height = 24;
-            this.DataGridView1.Size = new System.Drawing.Size(1039, 168);
-            this.DataGridView1.TabIndex = 22;
+            this.DataGridView.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.Location = new System.Drawing.Point(233, 253);
+            this.DataGridView.Name = "DataGridView";
+            this.DataGridView.RowHeadersWidth = 51;
+            this.DataGridView.RowTemplate.Height = 24;
+            this.DataGridView.Size = new System.Drawing.Size(1018, 153);
+            this.DataGridView.TabIndex = 22;
+            this.DataGridView.Click += new System.EventHandler(this.DataGridView_Click);
             // 
-            // txtGhichu
+            // txtMota
             // 
-            this.txtGhichu.Location = new System.Drawing.Point(1015, 90);
-            this.txtGhichu.Name = "txtGhichu";
-            this.txtGhichu.Size = new System.Drawing.Size(229, 22);
-            this.txtGhichu.TabIndex = 21;
+            this.txtMota.Location = new System.Drawing.Point(1015, 90);
+            this.txtMota.Name = "txtMota";
+            this.txtMota.Size = new System.Drawing.Size(229, 22);
+            this.txtMota.TabIndex = 21;
             // 
             // txtSoluong
             // 
-            this.txtSoluong.Location = new System.Drawing.Point(631, 193);
+            this.txtSoluong.Location = new System.Drawing.Point(660, 193);
             this.txtSoluong.Name = "txtSoluong";
-            this.txtSoluong.Size = new System.Drawing.Size(229, 22);
+            this.txtSoluong.Size = new System.Drawing.Size(200, 22);
             this.txtSoluong.TabIndex = 19;
             // 
             // txtGiabia
@@ -336,16 +345,16 @@
             // 
             // txtTensach
             // 
-            this.txtTensach.Location = new System.Drawing.Point(287, 147);
+            this.txtTensach.Location = new System.Drawing.Point(301, 147);
             this.txtTensach.Name = "txtTensach";
-            this.txtTensach.Size = new System.Drawing.Size(182, 22);
+            this.txtTensach.Size = new System.Drawing.Size(168, 22);
             this.txtTensach.TabIndex = 14;
             // 
             // txtMasach
             // 
-            this.txtMasach.Location = new System.Drawing.Point(287, 93);
+            this.txtMasach.Location = new System.Drawing.Point(301, 93);
             this.txtMasach.Name = "txtMasach";
-            this.txtMasach.Size = new System.Drawing.Size(182, 22);
+            this.txtMasach.Size = new System.Drawing.Size(168, 22);
             this.txtMasach.TabIndex = 12;
             // 
             // lblMota
@@ -413,7 +422,7 @@
             // 
             this.lblMatheloai.AutoSize = true;
             this.lblMatheloai.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMatheloai.Location = new System.Drawing.Point(191, 199);
+            this.lblMatheloai.Location = new System.Drawing.Point(197, 196);
             this.lblMatheloai.Name = "lblMatheloai";
             this.lblMatheloai.Size = new System.Drawing.Size(83, 16);
             this.lblMatheloai.TabIndex = 4;
@@ -423,7 +432,7 @@
             // 
             this.lblTensach.AutoSize = true;
             this.lblTensach.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTensach.Location = new System.Drawing.Point(191, 150);
+            this.lblTensach.Location = new System.Drawing.Point(197, 150);
             this.lblTensach.Name = "lblTensach";
             this.lblTensach.Size = new System.Drawing.Size(71, 16);
             this.lblTensach.TabIndex = 3;
@@ -433,7 +442,7 @@
             // 
             this.lblMasach.AutoSize = true;
             this.lblMasach.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMasach.Location = new System.Drawing.Point(191, 99);
+            this.lblMasach.Location = new System.Drawing.Point(197, 101);
             this.lblMasach.Name = "lblMasach";
             this.lblMasach.Size = new System.Drawing.Size(65, 16);
             this.lblMasach.TabIndex = 2;
@@ -479,7 +488,7 @@
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -507,8 +516,8 @@
         private System.Windows.Forms.Label lblMatheloai;
         private System.Windows.Forms.Label lblTensach;
         private System.Windows.Forms.Label lblMasach;
-        private System.Windows.Forms.TextBox txtGhichu;
-        private System.Windows.Forms.DataGridView DataGridView1;
+        private System.Windows.Forms.TextBox txtMota;
+        private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Button btnThoatsach;
         private System.Windows.Forms.Button btnBoquasach;
         private System.Windows.Forms.Button btnLuusach;
