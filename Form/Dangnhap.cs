@@ -17,6 +17,7 @@ namespace thutap
         public Dangnhap()
         {
             InitializeComponent();
+            txtMatkhau.PasswordChar = '●';
         }
 
         private void Dangnhap_Load(object sender, EventArgs e)

@@ -244,6 +244,7 @@
             this.cboMaNV.Name = "cboMaNV";
             this.cboMaNV.Size = new System.Drawing.Size(278, 24);
             this.cboMaNV.TabIndex = 14;
+//            this.cboMaNV.SelectedIndexChanged += new System.EventHandler(this.cboMaNV_SelectedIndexChanged);
             this.cboMaNV.TextChanged += new System.EventHandler(this.cboMaNV_TextChanged);
             // 
             // mskNgayThue
