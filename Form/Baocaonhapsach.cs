@@ -23,7 +23,7 @@ namespace thutap
         {
             try
             {
-                string connstring = "Data Source=DESKTOP-6RBUAUT\\SQLEXPRESS;Initial Catalog=thuvien;Integrated Security=True;TrustServerCertificate=True";
+                string connstring = "Data Source=DESKTOP-IK88KCU;Initial Catalog=thuvien;Integrated Security=True;TrustServerCertificate=True";
                 
                 using (SqlConnection connection = new SqlConnection(connstring))
                 {
@@ -111,14 +111,24 @@ namespace thutap
             HienThiBaoCao(tuNgay, denNgay);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnThoat_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show(
+     "Bạn đang thao tác trên dữ liệu.\nNếu bạn đóng lại bây giờ, mọi thay đổi chưa lưu sẽ bị mất.\n\nBạn có chắc chắn muốn thoát không?",
+     "Xác nhận thoát",
+     MessageBoxButtons.YesNo,
+     MessageBoxIcon.Question
+ );
 
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }
