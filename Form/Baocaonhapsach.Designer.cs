@@ -34,20 +34,20 @@
             this.lblPhieunhap = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.In = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.dgvBaocao = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtsoluong = new System.Windows.Forms.TextBox();
+            this.txttungay = new System.Windows.Forms.MaskedTextBox();
+            this.txtdenngay = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBaocao)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,42 +102,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Từ ngày:";
             // 
-            // dataGridView1
+            // dgvBaocao
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(85, 167);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(600, 162);
-            this.dataGridView1.TabIndex = 8;
-            // 
-            // In
-            // 
-            this.In.AutoSize = true;
-            this.In.Location = new System.Drawing.Point(282, 360);
-            this.In.Name = "In";
-            this.In.Size = new System.Drawing.Size(70, 16);
-            this.In.TabIndex = 9;
-            this.In.Text = "In báo cáo";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(433, 360);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 16);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Hiển thị";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(588, 360);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 16);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Đóng";
+            this.dgvBaocao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBaocao.Location = new System.Drawing.Point(85, 167);
+            this.dgvBaocao.Name = "dgvBaocao";
+            this.dgvBaocao.RowHeadersWidth = 51;
+            this.dgvBaocao.RowTemplate.Height = 24;
+            this.dgvBaocao.Size = new System.Drawing.Size(600, 162);
+            this.dgvBaocao.TabIndex = 8;
+            this.dgvBaocao.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label3
             // 
@@ -149,30 +123,31 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Số lượng:";
             // 
-            // textBox1
+            // txtsoluong
             // 
-            this.textBox1.Location = new System.Drawing.Point(131, 354);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 13;
+            this.txtsoluong.Location = new System.Drawing.Point(131, 354);
+            this.txtsoluong.Name = "txtsoluong";
+            this.txtsoluong.Size = new System.Drawing.Size(100, 22);
+            this.txtsoluong.TabIndex = 13;
+            this.txtsoluong.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // maskedTextBox1
+            // txttungay
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(131, 104);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 22);
-            this.maskedTextBox1.TabIndex = 14;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.txttungay.Location = new System.Drawing.Point(131, 104);
+            this.txttungay.Mask = "00/00/0000";
+            this.txttungay.Name = "txttungay";
+            this.txttungay.Size = new System.Drawing.Size(100, 22);
+            this.txttungay.TabIndex = 14;
+            this.txttungay.ValidatingType = typeof(System.DateTime);
             // 
-            // maskedTextBox2
+            // txtdenngay
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(131, 130);
-            this.maskedTextBox2.Mask = "00/00/0000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 22);
-            this.maskedTextBox2.TabIndex = 15;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.txtdenngay.Location = new System.Drawing.Point(131, 130);
+            this.txtdenngay.Mask = "00/00/0000";
+            this.txtdenngay.Name = "txtdenngay";
+            this.txtdenngay.Size = new System.Drawing.Size(100, 22);
+            this.txtdenngay.TabIndex = 15;
+            this.txtdenngay.ValidatingType = typeof(System.DateTime);
             // 
             // panel1
             // 
@@ -193,20 +168,48 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Phần mềm quản lý sách-Thư viện D FREE BOOK";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(290, 368);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "In báo cáo";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(467, 368);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Hiển thị";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(591, 368);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Đóng";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Baocaonhapsach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtdenngay);
+            this.Controls.Add(this.txttungay);
+            this.Controls.Add(this.txtsoluong);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.In);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvBaocao);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.plheader);
@@ -216,7 +219,7 @@
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.plheader.ResumeLayout(false);
             this.plheader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBaocao)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -230,15 +233,15 @@
         private System.Windows.Forms.Label lblPhieunhap;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label In;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvBaocao;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.TextBox txtsoluong;
+        private System.Windows.Forms.MaskedTextBox txttungay;
+        private System.Windows.Forms.MaskedTextBox txtdenngay;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

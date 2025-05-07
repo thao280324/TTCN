@@ -28,6 +28,7 @@ namespace thutap
             txtTendangnhap.Text = tenDangNhap;
             txtTendangnhap.ReadOnly = true;
             PhanQuyenNguoiDung();
+            Class.function.Connect();
         }
         private void PhanQuyenNguoiDung()
         {
