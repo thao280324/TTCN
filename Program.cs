@@ -18,7 +18,7 @@ namespace thutap
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                Application.Run(new FrmMain());
+                Application.Run(new Dangnhap());
             }
             catch (Exception ex)
             {

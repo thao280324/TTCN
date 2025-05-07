@@ -95,6 +95,7 @@
             this.plheader.Name = "plheader";
             this.plheader.Size = new System.Drawing.Size(1382, 114);
             this.plheader.TabIndex = 5;
+            this.plheader.Paint += new System.Windows.Forms.PaintEventHandler(this.plheader_Paint);
             // 
             // lblPhieumuon
             // 

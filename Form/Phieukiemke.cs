@@ -40,5 +40,10 @@ namespace thutap
                 this.Close();
             }
         }
+
+        private void plheader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

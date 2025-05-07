@@ -39,8 +39,8 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtdenngay = new System.Windows.Forms.MaskedTextBox();
-            this.txttungay = new System.Windows.Forms.MaskedTextBox();
+            this.dtdenngay = new System.Windows.Forms.DateTimePicker();
+            this.dttungay = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -130,34 +130,31 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtdenngay);
-            this.groupBox2.Controls.Add(this.txttungay);
+            this.groupBox2.Controls.Add(this.dtdenngay);
+            this.groupBox2.Controls.Add(this.dttungay);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(32, 209);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(234, 100);
+            this.groupBox2.Size = new System.Drawing.Size(290, 100);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thời gian";
             // 
-            // txtdenngay
+            // dtdenngay
             // 
-            this.txtdenngay.Location = new System.Drawing.Point(79, 62);
-            this.txtdenngay.Mask = "00/00/0000";
-            this.txtdenngay.Name = "txtdenngay";
-            this.txtdenngay.Size = new System.Drawing.Size(100, 22);
-            this.txtdenngay.TabIndex = 8;
-            this.txtdenngay.ValidatingType = typeof(System.DateTime);
+            this.dtdenngay.Location = new System.Drawing.Point(71, 65);
+            this.dtdenngay.Name = "dtdenngay";
+            this.dtdenngay.Size = new System.Drawing.Size(200, 22);
+            this.dtdenngay.TabIndex = 7;
             // 
-            // txttungay
+            // dttungay
             // 
-            this.txttungay.Location = new System.Drawing.Point(71, 31);
-            this.txttungay.Mask = "00/00/0000";
-            this.txttungay.Name = "txttungay";
-            this.txttungay.Size = new System.Drawing.Size(100, 22);
-            this.txttungay.TabIndex = 7;
-            this.txttungay.ValidatingType = typeof(System.DateTime);
+            this.dttungay.Location = new System.Drawing.Point(71, 31);
+            this.dttungay.Name = "dttungay";
+            this.dttungay.Size = new System.Drawing.Size(200, 22);
+            this.dttungay.TabIndex = 3;
+            this.dttungay.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label3
             // 
@@ -205,6 +202,7 @@
             this.btnin.TabIndex = 10;
             this.btnin.Text = "In";
             this.btnin.UseVisualStyleBackColor = true;
+            this.btnin.Click += new System.EventHandler(this.btnin_Click);
             // 
             // btndong
             // 
@@ -288,8 +286,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rdbtacgia;
-        private System.Windows.Forms.MaskedTextBox txtdenngay;
-        private System.Windows.Forms.MaskedTextBox txttungay;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -302,5 +298,7 @@
         private System.Windows.Forms.Button btntimlai;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dtdenngay;
+        private System.Windows.Forms.DateTimePicker dttungay;
     }
 }
