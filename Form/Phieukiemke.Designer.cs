@@ -42,6 +42,7 @@
             this.btnXoaphieu = new System.Windows.Forms.Button();
             this.btnLuuphieu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpNgaykiemke = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtTennhanvien = new System.Windows.Forms.TextBox();
             this.txtMaphieu = new System.Windows.Forms.TextBox();
@@ -63,7 +64,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtTong = new System.Windows.Forms.TextBox();
-            this.dtpNgaykiemke = new System.Windows.Forms.DateTimePicker();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboPhieu = new System.Windows.Forms.ComboBox();
+            this.btnTimphieu = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
@@ -72,6 +76,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -232,6 +237,14 @@
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chung";
+            // 
+            // dtpNgaykiemke
+            // 
+            this.dtpNgaykiemke.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaykiemke.Location = new System.Drawing.Point(185, 177);
+            this.dtpNgaykiemke.Name = "dtpNgaykiemke";
+            this.dtpNgaykiemke.Size = new System.Drawing.Size(224, 22);
+            this.dtpNgaykiemke.TabIndex = 10;
             // 
             // comboBox1
             // 
@@ -423,7 +436,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(894, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(894, 226);
             this.dataGridView1.TabIndex = 29;
             // 
             // txtTong
@@ -433,13 +446,46 @@
             this.txtTong.Size = new System.Drawing.Size(96, 22);
             this.txtTong.TabIndex = 13;
             // 
-            // dtpNgaykiemke
+            // panel2
             // 
-            this.dtpNgaykiemke.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaykiemke.Location = new System.Drawing.Point(185, 177);
-            this.dtpNgaykiemke.Name = "dtpNgaykiemke";
-            this.dtpNgaykiemke.Size = new System.Drawing.Size(224, 22);
-            this.dtpNgaykiemke.TabIndex = 10;
+            this.panel2.BackColor = System.Drawing.Color.Azure;
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.cboPhieu);
+            this.panel2.Controls.Add(this.btnTimphieu);
+            this.panel2.Location = new System.Drawing.Point(25, 665);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(505, 50);
+            this.panel2.TabIndex = 32;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(13, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(82, 16);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Mã phiếu  :";
+            // 
+            // cboPhieu
+            // 
+            this.cboPhieu.FormattingEnabled = true;
+            this.cboPhieu.Location = new System.Drawing.Point(128, 10);
+            this.cboPhieu.Name = "cboPhieu";
+            this.cboPhieu.Size = new System.Drawing.Size(249, 24);
+            this.cboPhieu.TabIndex = 1;
+            // 
+            // btnTimphieu
+            // 
+            this.btnTimphieu.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnTimphieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimphieu.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnTimphieu.Location = new System.Drawing.Point(394, 4);
+            this.btnTimphieu.Name = "btnTimphieu";
+            this.btnTimphieu.Size = new System.Drawing.Size(99, 32);
+            this.btnTimphieu.TabIndex = 0;
+            this.btnTimphieu.Text = "Tìm kiếm";
+            this.btnTimphieu.UseVisualStyleBackColor = false;
             // 
             // Phieukiemke
             // 
@@ -447,6 +493,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1382, 771);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.txtTong);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
@@ -470,6 +517,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,5 +560,9 @@
         private System.Windows.Forms.RadioButton rdoDu;
         private System.Windows.Forms.TextBox txtTong;
         private System.Windows.Forms.DateTimePicker dtpNgaykiemke;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cboPhieu;
+        private System.Windows.Forms.Button btnTimphieu;
     }
 }
