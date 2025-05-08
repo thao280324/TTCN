@@ -40,8 +40,9 @@
             this.btnInphieu = new System.Windows.Forms.Button();
             this.btnXoaphieu = new System.Windows.Forms.Button();
             this.btnLuuphieu = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgridphucche = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpNgaylap = new System.Windows.Forms.DateTimePicker();
             this.cboManhanvien = new System.Windows.Forms.ComboBox();
             this.txtTennhanvien = new System.Windows.Forms.TextBox();
             this.txtMaphieu = new System.Windows.Forms.TextBox();
@@ -50,7 +51,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTinhtrang = new System.Windows.Forms.TextBox();
             this.cboMasach = new System.Windows.Forms.ComboBox();
             this.txtTensach = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,15 +60,19 @@
             this.rdoCo = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dtpNgaylap = new System.Windows.Forms.DateTimePicker();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboPhieu = new System.Windows.Forms.ComboBox();
+            this.btnTimphieu = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridphucche)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -149,6 +154,7 @@
             this.btnThemphieu.Text = "Thêm Mới";
             this.btnThemphieu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThemphieu.UseVisualStyleBackColor = false;
+            this.btnThemphieu.Click += new System.EventHandler(this.btnThemphieu_Click);
             // 
             // btnThoatphieu
             // 
@@ -161,6 +167,7 @@
             this.btnThoatphieu.TabIndex = 6;
             this.btnThoatphieu.Text = "Thoát";
             this.btnThoatphieu.UseVisualStyleBackColor = false;
+            this.btnThoatphieu.Click += new System.EventHandler(this.btnThoatphieu_Click);
             // 
             // btnInphieu
             // 
@@ -173,6 +180,7 @@
             this.btnInphieu.TabIndex = 7;
             this.btnInphieu.Text = "In Phiếu";
             this.btnInphieu.UseVisualStyleBackColor = false;
+            this.btnInphieu.Click += new System.EventHandler(this.btnInphieu_Click);
             // 
             // btnXoaphieu
             // 
@@ -185,6 +193,7 @@
             this.btnXoaphieu.TabIndex = 3;
             this.btnXoaphieu.Text = "Xoá";
             this.btnXoaphieu.UseVisualStyleBackColor = false;
+            this.btnXoaphieu.Click += new System.EventHandler(this.btnXoaphieu_Click);
             // 
             // btnLuuphieu
             // 
@@ -197,16 +206,19 @@
             this.btnLuuphieu.TabIndex = 4;
             this.btnLuuphieu.Text = "Lưu";
             this.btnLuuphieu.UseVisualStyleBackColor = false;
+            this.btnLuuphieu.Click += new System.EventHandler(this.btnLuuphieu_Click);
             // 
-            // dataGridView1
+            // dgridphucche
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(293, 441);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(879, 150);
-            this.dataGridView1.TabIndex = 28;
+            this.dgridphucche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgridphucche.Location = new System.Drawing.Point(314, 410);
+            this.dgridphucche.Name = "dgridphucche";
+            this.dgridphucche.RowHeadersWidth = 51;
+            this.dgridphucche.RowTemplate.Height = 24;
+            this.dgridphucche.Size = new System.Drawing.Size(879, 150);
+            this.dgridphucche.TabIndex = 28;
+            this.dgridphucche.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgridphucche_CellClick);
+            this.dgridphucche.Click += new System.EventHandler(this.dgridphucche_Click);
             // 
             // groupBox1
             // 
@@ -224,6 +236,14 @@
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chung";
+            // 
+            // dtpNgaylap
+            // 
+            this.dtpNgaylap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaylap.Location = new System.Drawing.Point(168, 199);
+            this.dtpNgaylap.Name = "dtpNgaylap";
+            this.dtpNgaylap.Size = new System.Drawing.Size(216, 22);
+            this.dtpNgaylap.TabIndex = 9;
             // 
             // cboManhanvien
             // 
@@ -246,6 +266,7 @@
             this.txtMaphieu.Name = "txtMaphieu";
             this.txtMaphieu.Size = new System.Drawing.Size(216, 22);
             this.txtMaphieu.TabIndex = 6;
+            this.txtMaphieu.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMaphieu_KeyUp);
             // 
             // label9
             // 
@@ -289,7 +310,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtTinhtrang);
             this.groupBox2.Controls.Add(this.cboMasach);
             this.groupBox2.Controls.Add(this.txtTensach);
             this.groupBox2.Controls.Add(this.label5);
@@ -305,12 +326,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhập";
             // 
-            // textBox1
+            // txtTinhtrang
             // 
-            this.textBox1.Location = new System.Drawing.Point(190, 145);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(304, 22);
-            this.textBox1.TabIndex = 10;
+            this.txtTinhtrang.Location = new System.Drawing.Point(190, 145);
+            this.txtTinhtrang.Name = "txtTinhtrang";
+            this.txtTinhtrang.Size = new System.Drawing.Size(304, 22);
+            this.txtTinhtrang.TabIndex = 10;
             // 
             // cboMasach
             // 
@@ -389,22 +410,56 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Tình trạng hư hỏng";
             // 
-            // dtpNgaylap
+            // panel2
             // 
-            this.dtpNgaylap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaylap.Location = new System.Drawing.Point(168, 199);
-            this.dtpNgaylap.Name = "dtpNgaylap";
-            this.dtpNgaylap.Size = new System.Drawing.Size(216, 22);
-            this.dtpNgaylap.TabIndex = 9;
+            this.panel2.BackColor = System.Drawing.Color.Azure;
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.cboPhieu);
+            this.panel2.Controls.Add(this.btnTimphieu);
+            this.panel2.Location = new System.Drawing.Point(825, 588);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(505, 50);
+            this.panel2.TabIndex = 31;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(13, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 16);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Mã phiếu  :";
+            // 
+            // cboPhieu
+            // 
+            this.cboPhieu.FormattingEnabled = true;
+            this.cboPhieu.Location = new System.Drawing.Point(128, 10);
+            this.cboPhieu.Name = "cboPhieu";
+            this.cboPhieu.Size = new System.Drawing.Size(249, 24);
+            this.cboPhieu.TabIndex = 1;
+            // 
+            // btnTimphieu
+            // 
+            this.btnTimphieu.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnTimphieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimphieu.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnTimphieu.Location = new System.Drawing.Point(394, 4);
+            this.btnTimphieu.Name = "btnTimphieu";
+            this.btnTimphieu.Size = new System.Drawing.Size(99, 32);
+            this.btnTimphieu.TabIndex = 0;
+            this.btnTimphieu.Text = "Tìm kiếm";
+            this.btnTimphieu.UseVisualStyleBackColor = false;
             // 
             // Phieuphucche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 691);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgridphucche);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.plheader);
@@ -417,11 +472,13 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridphucche)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -438,7 +495,7 @@
         private System.Windows.Forms.Button btnInphieu;
         private System.Windows.Forms.Button btnXoaphieu;
         private System.Windows.Forms.Button btnLuuphieu;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgridphucche;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
@@ -456,7 +513,11 @@
         private System.Windows.Forms.TextBox txtMaphieu;
         private System.Windows.Forms.ComboBox cboMasach;
         private System.Windows.Forms.TextBox txtTensach;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTinhtrang;
         private System.Windows.Forms.DateTimePicker dtpNgaylap;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cboPhieu;
+        private System.Windows.Forms.Button btnTimphieu;
     }
 }

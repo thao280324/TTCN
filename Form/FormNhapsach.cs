@@ -466,5 +466,10 @@ cboManhanvien.Text + "'";
                 e.Handled = true; // Ngăn không cho sự kiện Enter tiếp tục
             }
         }
+
+        private void plheader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
