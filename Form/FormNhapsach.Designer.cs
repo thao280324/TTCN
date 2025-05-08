@@ -39,9 +39,9 @@
             this.cboTimkiemphieunhap = new System.Windows.Forms.ComboBox();
             this.btnTimkiemphieunhap = new System.Windows.Forms.Button();
             this.grp1 = new System.Windows.Forms.GroupBox();
+            this.dtpNgaynhap = new System.Windows.Forms.DateTimePicker();
             this.txtTennhanvien = new System.Windows.Forms.TextBox();
             this.cboManhanvien = new System.Windows.Forms.ComboBox();
-            this.mskNgaynhap = new System.Windows.Forms.MaskedTextBox();
             this.txtMaphieunhap = new System.Windows.Forms.TextBox();
             this.lblTennhanvien = new System.Windows.Forms.Label();
             this.lblManhanvien = new System.Windows.Forms.Label();
@@ -98,6 +98,7 @@
             this.plheader.Name = "plheader";
             this.plheader.Size = new System.Drawing.Size(1360, 114);
             this.plheader.TabIndex = 6;
+            this.plheader.Paint += new System.Windows.Forms.PaintEventHandler(this.plheader_Paint);
             // 
             // lblPhieunhap
             // 
@@ -158,6 +159,7 @@
             this.cboTimkiemphieunhap.Size = new System.Drawing.Size(249, 24);
             this.cboTimkiemphieunhap.TabIndex = 1;
             this.cboTimkiemphieunhap.DropDown += new System.EventHandler(this.cboTimkiemphieunhap_DropDown);
+            this.cboTimkiemphieunhap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboTimkiemphieunhap_KeyDown);
             // 
             // btnTimkiemphieunhap
             // 
@@ -174,9 +176,9 @@
             // 
             // grp1
             // 
+            this.grp1.Controls.Add(this.dtpNgaynhap);
             this.grp1.Controls.Add(this.txtTennhanvien);
             this.grp1.Controls.Add(this.cboManhanvien);
-            this.grp1.Controls.Add(this.mskNgaynhap);
             this.grp1.Controls.Add(this.txtMaphieunhap);
             this.grp1.Controls.Add(this.lblTennhanvien);
             this.grp1.Controls.Add(this.lblManhanvien);
@@ -188,6 +190,14 @@
             this.grp1.TabIndex = 9;
             this.grp1.TabStop = false;
             this.grp1.Text = "Thông tin chung";
+            // 
+            // dtpNgaynhap
+            // 
+            this.dtpNgaynhap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaynhap.Location = new System.Drawing.Point(206, 140);
+            this.dtpNgaynhap.Name = "dtpNgaynhap";
+            this.dtpNgaynhap.Size = new System.Drawing.Size(328, 22);
+            this.dtpNgaynhap.TabIndex = 9;
             // 
             // txtTennhanvien
             // 
@@ -204,15 +214,7 @@
             this.cboManhanvien.Size = new System.Drawing.Size(328, 24);
             this.cboManhanvien.TabIndex = 7;
             this.cboManhanvien.SelectedIndexChanged += new System.EventHandler(this.cboManhanvien_SelectedIndexChanged);
-            // 
-            // mskNgaynhap
-            // 
-            this.mskNgaynhap.Location = new System.Drawing.Point(206, 140);
-            this.mskNgaynhap.Mask = "00/00/0000";
-            this.mskNgaynhap.Name = "mskNgaynhap";
-            this.mskNgaynhap.Size = new System.Drawing.Size(328, 22);
-            this.mskNgaynhap.TabIndex = 6;
-            this.mskNgaynhap.ValidatingType = typeof(System.DateTime);
+            this.cboManhanvien.TextChanged += new System.EventHandler(this.cboManhanvien_TextChanged);
             // 
             // txtMaphieunhap
             // 
@@ -388,6 +390,7 @@
             this.cboMasach.Size = new System.Drawing.Size(328, 24);
             this.cboMasach.TabIndex = 9;
             this.cboMasach.SelectedIndexChanged += new System.EventHandler(this.cboMasach_SelectedIndexChanged);
+            this.cboMasach.TextChanged += new System.EventHandler(this.cboMasach_TextChanged);
             // 
             // txtSoluong
             // 
@@ -525,7 +528,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtTennhanvien;
         private System.Windows.Forms.ComboBox cboManhanvien;
-        private System.Windows.Forms.MaskedTextBox mskNgaynhap;
         private System.Windows.Forms.TextBox txtMaphieunhap;
         private System.Windows.Forms.Label lblTong;
         private System.Windows.Forms.Label lblSoluong;
@@ -539,5 +541,6 @@
         private System.Windows.Forms.Label lblGhichu;
         private System.Windows.Forms.ComboBox cboMasach;
         private System.Windows.Forms.TextBox txtSoluong;
+        private System.Windows.Forms.DateTimePicker dtpNgaynhap;
     }
 }

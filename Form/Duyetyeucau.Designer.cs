@@ -39,7 +39,7 @@
             this.cboChonphieu = new System.Windows.Forms.ComboBox();
             this.lblMa = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.mskNgay = new System.Windows.Forms.MaskedTextBox();
+            this.dtpNgaylap = new System.Windows.Forms.DateTimePicker();
             this.txtManhanvien = new System.Windows.Forms.TextBox();
             this.txtMaphieu = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -141,6 +141,7 @@
             this.cboChonphieu.TabIndex = 11;
             this.cboChonphieu.DropDown += new System.EventHandler(this.cboChonphieu_DropDown);
             this.cboChonphieu.SelectedIndexChanged += new System.EventHandler(this.cboChonphieu_SelectedIndexChanged);
+            this.cboChonphieu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboChonphieu_KeyDown);
             // 
             // lblMa
             // 
@@ -154,7 +155,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.mskNgay);
+            this.groupBox2.Controls.Add(this.dtpNgaylap);
             this.groupBox2.Controls.Add(this.txtManhanvien);
             this.groupBox2.Controls.Add(this.txtMaphieu);
             this.groupBox2.Controls.Add(this.label4);
@@ -167,14 +168,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phiếu";
             // 
-            // mskNgay
+            // dtpNgaylap
             // 
-            this.mskNgay.Location = new System.Drawing.Point(222, 80);
-            this.mskNgay.Mask = "00/00/0000";
-            this.mskNgay.Name = "mskNgay";
-            this.mskNgay.Size = new System.Drawing.Size(192, 22);
-            this.mskNgay.TabIndex = 18;
-            this.mskNgay.ValidatingType = typeof(System.DateTime);
+            this.dtpNgaylap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaylap.Location = new System.Drawing.Point(222, 87);
+            this.dtpNgaylap.Name = "dtpNgaylap";
+            this.dtpNgaylap.Size = new System.Drawing.Size(192, 22);
+            this.dtpNgaylap.TabIndex = 18;
             // 
             // txtManhanvien
             // 
@@ -325,7 +325,6 @@
         private System.Windows.Forms.ComboBox cboChonphieu;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox mskNgay;
         private System.Windows.Forms.TextBox txtManhanvien;
         private System.Windows.Forms.TextBox txtMaphieu;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -334,5 +333,6 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTrangthaiduyet;
+        private System.Windows.Forms.DateTimePicker dtpNgaylap;
     }
 }

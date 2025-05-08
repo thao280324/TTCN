@@ -37,7 +37,7 @@ namespace thutap
             Class.function.Connect();
             txtMadocgia.Enabled = true;
             btnLuuthe.Enabled = false;
-            btnBoquathe.Enabled = false;
+           // btnBoquathe.Enabled = false;
 
             Load_DataGridView2();
             Resetvalues();
@@ -45,6 +45,7 @@ namespace thutap
             function.FillCombo2(sql, cboTimkiemthe, "Mathanhvien", "Mathanhvien");
             cboTimkiemthe.SelectedIndex = -1;
             vaiTro = vaiTro.Trim();  // Loại bỏ khoảng trắng
+            EnableAutoComplete();
 
             // Kiểm tra vai trò và phân quyền cho các nút
             if (vaiTro == "Nhân viên thủ thư")
@@ -54,7 +55,7 @@ namespace thutap
                 btnSuathe.Enabled = true;
                 btnXoathe.Enabled = true;
                 btnLuuthe.Enabled = true;
-                btnBoquathe.Enabled = true;
+              //  btnBoquathe.Enabled = true;
                 btnInthe.Enabled = true;
                 btnThoatthe.Enabled = true;
                 btnTimkiemthe.Enabled = true;
@@ -71,7 +72,7 @@ namespace thutap
                 rdoNam.Enabled = false;
                 rdoNu.Enabled= false;
                 txtSodienthoai.Enabled = false;
-                mskNgay.Enabled = false;
+                dtpNgaydangky.Enabled = false;
             }
             else
             {
@@ -80,12 +81,18 @@ namespace thutap
                 this.Close();
             }
         }
-        private void Resetvalues()
+        private void EnableAutoComplete()
+        {
+            cboTimkiemthe.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboTimkiemthe.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+
+        }
+            private void Resetvalues()
         {
             txtMadocgia.Text = "";
             txtTendocgia.Text = "";
             txtSodienthoai.Text = "";
-            mskNgay.Text = "";
+            dtpNgaydangky.Text = "";
             rdoNam.Checked = false;
             rdoNu.Checked = false;
         }
@@ -115,25 +122,13 @@ namespace thutap
         {
             btnSuathe.Enabled = false;
             btnXoathe.Enabled = false;
-            btnBoquathe.Enabled = true;
+           // btnBoquathe.Enabled = true;
             btnLuuthe.Enabled = true;
             btnThemthe.Enabled = false;
             Resetvalues();
             txtMadocgia.Enabled = true;
             txtMadocgia.Focus();
         }
-
-        private void btnBoquathe_Click(object sender, EventArgs e)
-        {
-            Resetvalues();
-            btnBoquathe.Enabled = false;
-            btnThemthe.Enabled = true;
-            btnXoathe.Enabled = true;
-            btnSuathe.Enabled = true;
-            btnLuuthe.Enabled = false;
-            txtMadocgia.Enabled = false;
-        }
-
         private void DataGridView2_Click(object sender, EventArgs e)
         {
             if (btnThemthe.Enabled == false)
@@ -157,11 +152,11 @@ namespace thutap
             else
                 rdoNu.Checked = true;
             txtSodienthoai.Text = DataGridView2.CurrentRow.Cells["Sodienthoai"].Value.ToString();
-            mskNgay.Text = Convert.ToDateTime(DataGridView2.CurrentRow.Cells["Ngaydangky"].Value).ToString("dd/MM/yyyy");
+            dtpNgaydangky.Text = Convert.ToDateTime(DataGridView2.CurrentRow.Cells["Ngaydangky"].Value).ToString("dd/MM/yyyy");
 
             btnSuathe.Enabled = true;
             btnXoathe.Enabled = true;
-            btnBoquathe.Enabled = true;
+          //  btnBoquathe.Enabled = true;
         }
 
         private void btnThoatthe_Click(object sender, EventArgs e)
@@ -206,19 +201,19 @@ namespace thutap
             }
 
             // Kiểm tra ngày đăng ký
-            if (mskNgay.Text.Trim().Length != 10)  // dd/MM/yyyy dài 10 ký tự  
+            if (dtpNgaydangky.Text.Trim().Length != 10)  // dd/MM/yyyy dài 10 ký tự  
             {
                 MessageBox.Show("Bạn phải nhập ngày đăng ký đúng định dạng dd/MM/yyyy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                mskNgay.Focus();
+                dtpNgaydangky.Focus();
                 return;
             }
 
             // Kiểm tra định dạng ngày tháng trước khi chuyển đổi
             DateTime ngayDangKy;
-            if (!DateTime.TryParseExact(mskNgay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out ngayDangKy))
+            if (!DateTime.TryParseExact(dtpNgaydangky.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out ngayDangKy))
             {
                 MessageBox.Show("Ngày không đúng định dạng dd/MM/yyyy", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                mskNgay.Focus();
+                dtpNgaydangky.Focus();
                 return;
             }
 
@@ -283,10 +278,10 @@ namespace thutap
                 MessageBox.Show("Bạn phải chọn giới tính", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (mskNgay.Text.Trim().Length != 10)
+            if (dtpNgaydangky.Text.Trim().Length != 10)
             {
                 MessageBox.Show("Bạn phải nhập ngày đăng ký đúng định dạng dd/MM/yyyy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                mskNgay.Focus();
+                dtpNgaydangky.Focus();
                 return;
             }
 
@@ -295,12 +290,12 @@ namespace thutap
             sql = "UPDATE thanhvien SET Tenthanhvien=N'" + txtTendocgia.Text.Trim() +
                   "', Gioitinh=N'" + gioitinh +
                   "', Sodienthoai=N'" + txtSodienthoai.Text.Trim() +
-                  "', Ngaydangky='" + function.ConvertDateTime(mskNgay.Text) +
+                  "', Ngaydangky='" + function.ConvertDateTime(dtpNgaydangky.Text) +
                   "' WHERE Mathanhvien=N'" + txtMadocgia.Text.Trim() + "'";
             function.RunSql(sql);
             Load_DataGridView2();
             Resetvalues();
-            btnBoquathe.Enabled = false;
+          //  btnBoquathe.Enabled = false;
             btnLuuthe.Enabled = true;
         }
 
@@ -341,7 +336,7 @@ namespace thutap
                 if (gioitinh == "Nam") rdoNam.Checked = true;
                 else rdoNu.Checked = true;
                 txtSodienthoai.Text = dt.Rows[0]["Sodienthoai"].ToString();
-                mskNgay.Text = Convert.ToDateTime(dt.Rows[0]["Ngaydangky"]).ToString("dd/MM/yyyy");
+                dtpNgaydangky.Text = Convert.ToDateTime(dt.Rows[0]["Ngaydangky"]).ToString("dd/MM/yyyy");
             }
         }
 
@@ -401,5 +396,13 @@ namespace thutap
             excelApp.Visible = true;
         }
 
+        private void cboTimkiemthe_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Ngừng xử lý tiếp sự kiện nếu muốn giữ lại giá trị nhập vào
+                e.Handled = true; // Ngăn không cho sự kiện Enter tiếp tục
+            }
+        }
     }
 }

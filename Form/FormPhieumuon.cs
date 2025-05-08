@@ -34,7 +34,7 @@ namespace thutap
             txtMaThue.ReadOnly = true;
             txtTenNV.ReadOnly = true;
             txtTenKH.ReadOnly = true;
-            mskNgayThue.ReadOnly = true;
+            dtpNgaymuon.Enabled = false;
             txtTenSach.ReadOnly = true;
           //  txtSoLuong.ReadOnly = true;
             txtTenTinhTrang.ReadOnly = true;
@@ -62,6 +62,15 @@ namespace thutap
         {
             cboMaNV.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
             cboMaNV.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+            cboMaKH.AutoCompleteMode= AutoCompleteMode.SuggestAppend;
+            cboMaKH.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboMaSach.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboMaSach.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboMaTinhTrang.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboMaTinhTrang.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboPhieumuon.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboPhieumuon.AutoCompleteSource = AutoCompleteSource.ListItems;
+
         }
 
         private void PhanQuyenChucNang()
@@ -100,7 +109,7 @@ namespace thutap
                 txtSoLuong.Enabled = false;
                 txtTenNV.Enabled = false;
                 txtTenSach.Enabled = false;
-                mskNgayThue.Enabled = false;
+                dtpNgaymuon.Enabled = false;
                 txtTong.Enabled = false;
             }
             else
@@ -113,7 +122,7 @@ namespace thutap
         private void ResetValues()
         {
             txtMaThue.Text = "";
-            mskNgayThue.Text = DateTime.Now.ToShortDateString();
+            dtpNgaymuon.Text = DateTime.Now.ToShortDateString();
             cboMaNV.Text = "";
             txtTenNV.Text = "";
             cboMaKH.Text = "";
@@ -168,15 +177,27 @@ namespace thutap
             string str;
 
             // Lấy ngày mượn từ bảng phieumuon
+            // Lấy ngày mượn từ bảng phieumuon
             str = "SELECT Ngaymuon FROM phieumuon WHERE Maphieumuon = '" + txtMaThue.Text + "'";
-            mskNgayThue.Text = Class.function.ConvertDateTime(function.GetFieldValues(str));
+            string ngay = Class.function.GetFieldValues(str);
+            DateTime d;
+            if (DateTime.TryParse(ngay, out d))
+            {
+                dtpNgaymuon.Value = d;
+            }
+            else
+            {
+                // nếu không parse được thì để Today hoặc bạn có thể show warning
+                dtpNgaymuon.Value = DateTime.Today;
+            }
+
 
             // Lấy mã nhân viên từ bảng phieumuon
             str = "SELECT Manhanvien FROM phieumuon WHERE Maphieumuon = '" + txtMaThue.Text + "'";
             cboMaNV.Text = Class.function.GetFieldValues(str);
 
             // Lấy tên nhân viên từ bảng nhanvien
-            str = "SELECT Tennhanvien FROM nhanvien WHERE Manhanvien = '" + cboMaNV.SelectedValue + "'";
+            str = "SELECT Tennhanvien FROM nhanvien WHERE Manhanvien = '" + cboMaNV.Text + "'";
             txtTenNV.Text = Class.function.GetFieldValues(str);
 
             
@@ -184,7 +205,7 @@ namespace thutap
             cboMaKH.Text = Class.function.GetFieldValues(str);
 
             
-            str = "SELECT Tenthanhvien FROM thanhvien WHERE Mathanhvien = '" + cboMaKH.SelectedValue + "'";
+            str = "SELECT Tenthanhvien FROM thanhvien WHERE Mathanhvien = '" + cboMaKH.Text + "'";
             txtTenKH.Text = Class.function.GetFieldValues(str);
 
             // Lấy hình thức mượn từ bảng phieumuon (Offline hoặc Online)
@@ -236,7 +257,7 @@ cboMaNV.Text + "'";
             {
                 txtTenKH.Text = "";
             }
-            str = "Select Tenthanhvien from thanhvien where Mathanhvien=N'" + cboMaKH.SelectedValue + "'";
+            str = "Select Tenthanhvien from thanhvien where Mathanhvien=N'" + cboMaKH.Text + "'";
             txtTenKH.Text = Class.function.GetFieldValues(str);
         }
 
@@ -247,7 +268,7 @@ cboMaNV.Text + "'";
             {
                 txtTenSach.Text = "";
             }
-            str = "Select Tensach from sach where Masach=N'" + cboMaSach.SelectedValue + "'";
+            str = "Select Tensach from sach where Masach=N'" + cboMaSach.Text + "'";
             txtTenSach.Text = Class.function.GetFieldValues(str);
         }
 
@@ -258,7 +279,7 @@ cboMaNV.Text + "'";
             {
                 txtTenTinhTrang.Text = "";
             }
-            str = "select Tentinhtrang from tinhtrang where Matinhtrang=N'" + cboMaTinhTrang.SelectedValue + "'";
+            str = "select Tentinhtrang from tinhtrang where Matinhtrang=N'" + cboMaTinhTrang.Text + "'";
             txtTenTinhTrang.Text = Class.function.GetFieldValues(str);
         }
 
@@ -281,7 +302,7 @@ cboMaNV.Text + "'";
             btnXoaHoaDon.Enabled = true;
             btnInHoaDon.Enabled = true;
             txtSoLuong.Enabled = false;
-            mskNgayThue.Enabled = false;
+            dtpNgaymuon.Enabled = false;
             cboMaNV.Enabled = false;
             cboMaSach.Enabled = false;
         }
@@ -421,10 +442,10 @@ cboMaNV.Text + "'";
                 return;
             }
 
-            if (mskNgayThue.Text.Trim().Length == 0)
+            if (dtpNgaymuon.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập ngày mượn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                mskNgayThue.Focus();
+                dtpNgaymuon.Focus();
                 return;
             }
 
@@ -463,7 +484,7 @@ cboMaNV.Text + "'";
             }
 
             // Kiểm tra ngày mượn
-            DateTime ngaymuon = DateTime.ParseExact(mskNgayThue.Text.Trim(), "dd/MM/yyyy", null);
+            DateTime ngaymuon = DateTime.ParseExact(dtpNgaymuon.Text.Trim(), "dd/MM/yyyy", null);
 
             // Kiểm tra mã phiếu mượn đã tồn tại chưa
             string sql = "SELECT Maphieumuon FROM phieumuon WHERE Maphieumuon=N'" + txtMaThue.Text.Trim() + "'";
@@ -515,7 +536,7 @@ cboMaNV.Text + "'";
             btnLuu.Enabled = true;
             btnThem.Enabled = true;
             btnInHoaDon.Enabled = true;
-            mskNgayThue.Enabled = false;
+            dtpNgaymuon.Enabled = false;
             cboMaNV.Enabled = false;
             cboMaKH.Enabled = false;
             cboMaSach.Text = "";
@@ -523,6 +544,11 @@ cboMaNV.Text + "'";
             txtSoLuong.Text = "";
             cboMaTinhTrang.Text = "";
             txtTenTinhTrang.Text = "";
+        }
+
+        private void cboPhieumuon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

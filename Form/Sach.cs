@@ -27,9 +27,9 @@ namespace thutap
         {
             txtMasach.Enabled = true;
             btnLuusach.Enabled = false;
-            btnBoquasach.Enabled = false;
+           // btnBoquasach.Enabled = false;
             PhanQuyenChucNang();
-            function.FillCombo2("SELECT MaNXB,TenNXB FROM Nxb",cboManxb,"MaNXB","TenNXB");
+            function.FillCombo2("SELECT MaNXB,TenNXB FROM Nxb", cboManxb, "MaNXB", "TenNXB");
             cboManxb.SelectedIndex = -1;
             function.FillCombo2("SELECT Matheloai,Tentheloai from Theloai", cboMatheloai, "Matheloai", "Tentheloai");
             cboMatheloai.SelectedIndex = -1;
@@ -40,6 +40,13 @@ namespace thutap
             string sql = "SELECT Masach FROM Sach";
             function.FillCombo2(sql, cboTimkiem, "Masach", "Masach");
             cboTimkiem.SelectedIndex = -1; // Không chọn mặc định
+            EnableAutoComplete();
+
+        }
+        private void EnableAutoComplete()
+        {
+            cboTimkiem.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboTimkiem.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
 
         }
         private void Resetvalues()
@@ -67,7 +74,7 @@ namespace thutap
                 btnSuasach.Enabled = true;
                 btnXoasach.Enabled = true;
                 btnLuusach.Enabled = true;
-                btnBoquasach.Enabled = true;
+              //  btnBoquasach.Enabled = true;
                 btnInsach.Enabled = true;
                 btnThoatsach.Enabled = true;
                 btnTimkiem.Enabled = true;
@@ -138,7 +145,7 @@ namespace thutap
         {
             btnSuasach.Enabled = false;
             btnXoasach.Enabled = false;
-            btnBoquasach.Enabled = true;
+          //  btnBoquasach.Enabled = true;
             btnLuusach.Enabled = true;
             btnThemsach.Enabled = false;
             Resetvalues();
@@ -173,7 +180,7 @@ MessageBoxIcon.Information);
             txtMota.Text = DataGridView.CurrentRow.Cells["Mota"].Value.ToString();
             btnSuasach.Enabled = true;
             btnXoasach.Enabled = true;
-            btnBoquasach.Enabled = true;
+          //  btnBoquasach.Enabled = true;
         }
 
         private void btnLuusach_Click(object sender, EventArgs e)
@@ -225,7 +232,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             btnXoasach.Enabled = true;
             btnThemsach.Enabled = true;
             btnSuasach.Enabled = true;
-            btnBoquasach.Enabled = false;
+          //  btnBoquasach.Enabled = false;
             btnLuusach.Enabled = false;
             txtMasach.Enabled = false;
 
@@ -245,19 +252,6 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Close();
             }
         }
-
-        private void btnBoquasach_Click(object sender, EventArgs e)
-        {
-            Resetvalues();
-            btnBoquasach.Enabled = false;
-            btnThemsach.Enabled = true;
-            btnXoasach.Enabled = true;
-            btnSuasach.Enabled = true;
-            btnLuusach.Enabled = false;
-            txtMasach.Enabled = false;
-
-        }
-
         private void btnSuasach_Click(object sender, EventArgs e)
         {
             string sql;
@@ -336,7 +330,6 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             function.RunSql(sql);
             Load_DataGridView();
             Resetvalues();
-            btnBoquasach.Enabled = false;
             btnLuusach.Enabled = true;
 
         }
@@ -444,6 +437,15 @@ MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
 
             // Hiển thị Excel
             excelApp.Visible = true;
+        }
+
+        private void cboTimkiem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Ngừng xử lý tiếp sự kiện nếu muốn giữ lại giá trị nhập vào
+                e.Handled = true; // Ngăn không cho sự kiện Enter tiếp tục
+            }
         }
     }
 }

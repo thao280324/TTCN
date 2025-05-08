@@ -50,6 +50,17 @@ namespace thutap
                 btnInphieunhap.Enabled = true;
             }
             Load_DataGridViewChitiet();
+            EnableAutoComplete();
+        }
+        private void EnableAutoComplete()
+        {
+            cboTimkiemphieunhap.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboTimkiemphieunhap.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+            cboMasach.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboMasach.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+            cboManhanvien.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboManhanvien.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+
         }
         private void PhanQuyenChucNang()
         {
@@ -80,7 +91,7 @@ namespace thutap
                 txtSoluong.Enabled = false ;
                 txtTennhanvien.Enabled = false ;
                 txtTensach.Enabled = false ;
-                mskNgaynhap.Enabled = false ;
+                dtpNgaynhap.Enabled = false ;
                 txtTong.Enabled = false ;
             }
             else
@@ -93,7 +104,7 @@ namespace thutap
         private void ResetValues()
         {
             txtMaphieunhap.Text = "";
-            mskNgaynhap.Text = DateTime.Now.ToShortDateString();
+            dtpNgaynhap.Text = DateTime.Now.ToShortDateString();
             cboManhanvien.Text = "";
             txtTennhanvien.Text = "";
             cboMasach.Text = "";
@@ -127,7 +138,7 @@ namespace thutap
         {
             string str;
             str = "SELECT Ngaynhap FROM phieunhap WHERE Maphieunhap=N'" + txtMaphieunhap.Text + "'";
-            mskNgaynhap.Text = function.GetFieldValues(str);
+            dtpNgaynhap.Text = function.GetFieldValues(str);
 
             str = "SELECT Manhanvien FROM phieunhap WHERE Maphieunhap=N'" + txtMaphieunhap.Text + "'";
             cboManhanvien.SelectedValue = function.GetFieldValues(str);
@@ -161,7 +172,7 @@ namespace thutap
             txtGhichu.Enabled = false;
             txtSoluong.Enabled = false;
             txtGhichu.Enabled = false;
-            mskNgaynhap.Enabled = false;
+            dtpNgaynhap.Enabled = false;
             cboManhanvien.Enabled = false;
             cboMasach.Enabled = false;  
         }
@@ -192,10 +203,10 @@ namespace thutap
                 return;
             }
 
-            if (mskNgaynhap.Text.Trim().Length == 0)
+            if (dtpNgaynhap.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập ngày lập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                mskNgaynhap.Focus();
+                dtpNgaynhap.Focus();
                 return;
             }
 
@@ -206,7 +217,7 @@ namespace thutap
                 return;
             }
 
-            DateTime ngaynhap = DateTime.ParseExact(mskNgaynhap.Text.Trim(), "dd/MM/yyyy", null);
+            DateTime ngaynhap = DateTime.ParseExact(dtpNgaynhap.Text.Trim(), "dd/MM/yyyy", null);
 
             // Kiểm tra xem mã phiếu đã tồn tại chưa
             string sql = "SELECT Maphieunhap FROM phieunhap WHERE Maphieunhap=N'" + txtMaphieunhap.Text.Trim() + "'";
@@ -257,7 +268,7 @@ namespace thutap
             btnLuuphieunhap.Enabled = true;
             btnThemphieunhap.Enabled = true;
             btnInphieunhap.Enabled = true;
-            mskNgaynhap.Enabled = false;
+            dtpNgaynhap.Enabled = false;
             cboManhanvien.Enabled = false;
             cboMasach.Text = "";
             txtTensach.Text = "";
@@ -423,6 +434,42 @@ namespace thutap
             txtTensach.Text = function.GetFieldValues(
                "SELECT Tensach FROM sach " +
                "WHERE Masach=N'" + cboMasach.SelectedValue + "'");
+        }
+
+        private void cboManhanvien_TextChanged(object sender, EventArgs e)
+        {
+            string str;
+            if (cboManhanvien.Text == "")
+                txtTennhanvien.Text = "";
+            // Khi kich chon Ma nhan vien thi ten nhan vien se tu dong hien ra
+            str = "Select Tennhanvien from nhanvien where Manhanvien =N'" +
+cboManhanvien.Text + "'";
+            txtTennhanvien.Text = function.GetFieldValues(str);
+        }
+
+        private void cboMasach_TextChanged(object sender, EventArgs e)
+        {
+            string str;
+            if (cboManhanvien.Text == "")
+                txtTennhanvien.Text = "";
+            // Khi kich chon Ma nhan vien thi ten nhan vien se tu dong hien ra
+            str = "Select Tennhanvien from nhanvien where Manhanvien =N'" +
+cboManhanvien.Text + "'";
+            txtTennhanvien.Text = function.GetFieldValues(str);
+        }
+
+        private void cboTimkiemphieunhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Ngừng xử lý tiếp sự kiện nếu muốn giữ lại giá trị nhập vào
+                e.Handled = true; // Ngăn không cho sự kiện Enter tiếp tục
+            }
+        }
+
+        private void plheader_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

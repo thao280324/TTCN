@@ -26,6 +26,7 @@ namespace thutap
 
         private void FormPhieutra_Load(object sender, EventArgs e)
         {
+            
             PhanQuyenChucNang();
             resetvalue();
             LoadPhieuMuon();
@@ -51,6 +52,17 @@ namespace thutap
 
             function.FillCombo("SELECT Manhanvien FROM nhanvien", cboManhanvien, "MaNhanVien"); cboManhanvien.SelectedIndex = -1;
             Class.function.FillCombo2("SELECT Mavipham FROM vipham", cboMavipham, "Mavipham","Tenvipham"); cboMavipham.SelectedIndex = -1;
+            EnableAutoComplete();
+        }
+        private void EnableAutoComplete()
+        {
+            cboPhieutra.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboPhieutra.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+            cboManhanvien.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboManhanvien.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+            cboMavipham.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboMavipham.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+
         }
         private void LoadPhieuMuon()
         {
@@ -88,7 +100,7 @@ namespace thutap
                 btnTimphieutra.Enabled = true;
                 cboManhanvien.Enabled = false;
                 txtMathanhvien.Enabled = false;
-                mskNgaymuon.Enabled = false;
+                dtpNgaymuon.Enabled = false;
                 dtpNgaytra.Enabled = false; 
                 chkVipham.Enabled = false;
                 cboMavipham.Enabled = false;
@@ -125,7 +137,7 @@ namespace thutap
         {
             txtMathanhvien.Text = string.Empty;
             txtMaphieutra.Text = string.Empty;
-            mskNgaymuon.Text = string.Empty;
+            dtpNgaymuon.Text = string.Empty;
             dtpNgaytra.Text = string.Empty;
             cboManhanvien.Text = string.Empty;
             chkVipham.Checked = false;
@@ -133,7 +145,7 @@ namespace thutap
             txtTenvipham.Text = string.Empty;
             dtpNgaytra.Text = "";
             txtMathanhvien.Enabled = false;
-            mskNgaymuon.Enabled = false;
+            dtpNgaymuon.Enabled = false;
             dtpNgaytra.Enabled = false;
             txtMaphieutra.Enabled = false;
         }
@@ -146,7 +158,8 @@ namespace thutap
             // reset form
             txtMaphieumuon.Text = "";
             txtMathanhvien.Clear();
-            mskNgaymuon.Clear();
+            //  dtpNgaymuon.Clear();
+            dtpNgaymuon.Text = "";
             dtpNgaytra.Text = "";
             txtSongaymuon.Clear();
             mskNgayphaitra.Clear();
@@ -205,7 +218,8 @@ namespace thutap
             }
 
             // Lấy ngày trả và các thông tin khác từ form
-            string ngayTra = dtpNgaytra.Value.ToString("dd/MM/yyyy");
+            string ngayTra = dtpNgaytra.Value.ToString("yyyy-MM-dd");
+            string ngayMuon = dtpNgaymuon.Value.ToString("yyyy-MM-dd");
             string maphieutra = txtMaphieutra.Text.Trim();
 
             // Kiểm tra nếu có sách nào để trả
@@ -218,7 +232,7 @@ namespace thutap
             // 1. Lưu thông tin phiếu trả vào cơ sở dữ liệu
             string sqlPT = $@"
         INSERT INTO phieutra (Maphieutra, Maphieumuon, Ngaymuon, Ngaytra, Manhanvien)
-        VALUES (N'{maphieutra}', N'{txtMaphieumuon.Text.Trim()}', '{mskNgaymuon.Text}', '{ngayTra}', N'{cboManhanvien.Text.Trim()}')
+        VALUES (N'{maphieutra}', N'{txtMaphieumuon.Text.Trim()}', '{ngayMuon}', '{ngayTra}', N'{cboManhanvien.Text.Trim()}')
     ";
             function.RunSql(sqlPT);
 
@@ -286,7 +300,7 @@ namespace thutap
                                       .Cells["Mathanhvien"]
                                       .Value?
                                       .ToString();
-            mskNgaymuon.Text = dataGridView1.Rows[e.RowIndex]
+            dtpNgaymuon.Text = dataGridView1.Rows[e.RowIndex]
                                    .Cells["Ngaymuon"]
                                    .Value?
                                    .ToString();
@@ -332,7 +346,7 @@ namespace thutap
             string masach = dataGridView2.CurrentRow.Cells["Masach"].Value.ToString();
             string tensach = dataGridView2.CurrentRow.Cells["Tensach"].Value.ToString();
             // Lấy ngày mượn từ mskNgaymuon, không từ grid2
-            DateTime ngayMuon = DateTime.Parse(mskNgaymuon.Text);
+            DateTime ngayMuon = DateTime.Parse(dtpNgaymuon.Text);
            // DateTime ngayTra = DateTime.Parse(dtpNgaytra.Text);
             // Lấy ngày trả từ dtpNgaytra
             DateTime ngayTra = dtpNgaytra.Value;
@@ -378,7 +392,7 @@ namespace thutap
 
             // 10) Điền tự động
             txtMathanhvien.Text = dataGridView1.CurrentRow.Cells["Mathanhvien"].Value.ToString();
-            mskNgaymuon.Text = dataGridView1.CurrentRow.Cells["Ngaymuon"].Value.ToString();
+            dtpNgaymuon.Text = dataGridView1.CurrentRow.Cells["Ngaymuon"].Value.ToString();
 
             // 11) Bật nút Lưu / Xóa
             btnLuuphieu.Enabled = true;
@@ -471,7 +485,7 @@ namespace thutap
                 // Điền thông tin vào các trường của form
                 txtMaphieutra.Text = maPhieuTra;
                 txtMathanhvien.Text = maThanhVien;
-                mskNgaymuon.Text = ngayMuon;
+                dtpNgaymuon.Text = ngayMuon;
                 dtpNgaytra.Text = ngayTra;
                 txtSongaymuon.Text = soNgayMuon;
 
@@ -483,13 +497,10 @@ namespace thutap
 
         private void cboMavipham_TextChanged(object sender, EventArgs e)
         {
-            string str;
-            if (cboMavipham.Text == "")
-            {
-                txtTenvipham.Text = "";
-            }
-            str = "select Tenvipham from vipham where Mavipham=N'" + cboMavipham.SelectedValue + "'";
-            txtTenvipham.Text = Class.function.GetFieldValues(str);
+
+            txtTenvipham.Text = function.GetFieldValues(
+               "SELECT Tenvipham FROM vipham " +
+               "WHERE Mavipham=N'" + cboMavipham.Text + "'");
         }
 
         private void btnTimphieutra_Click(object sender, EventArgs e)
@@ -536,12 +547,12 @@ namespace thutap
             if (dtPM.Rows.Count > 0)
             {
                 txtMathanhvien.Text = dtPM.Rows[0]["Mathanhvien"].ToString();
-                mskNgaymuon.Text = Convert.ToDateTime(dtPM.Rows[0]["Ngaymuon"]).ToShortDateString();
+                dtpNgaymuon.Text = Convert.ToDateTime(dtPM.Rows[0]["Ngaymuon"]).ToShortDateString();
             }
             else
             {
                 txtMathanhvien.Clear();
-                mskNgaymuon.Clear();
+                dtpNgaymuon.Text = "";
             }
 
             // 5) Ngày trả + NV thủ thư + vi phạm
@@ -781,6 +792,17 @@ namespace thutap
             exSheet.Name = "Phiếu Trả Sách";
             exApp.Visible = true;
 
+        }
+
+        private void cboMavipham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string str;
+            if (cboMavipham.Text == "")
+            {
+                txtTenvipham.Text = "";
+            }
+            str = "select Tenvipham from vipham where Mavipham=N'" + cboMavipham.SelectedValue + "'";
+            txtTenvipham.Text = Class.function.GetFieldValues(str);
         }
     }
 }

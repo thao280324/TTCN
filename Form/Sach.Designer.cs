@@ -45,7 +45,6 @@
             this.btnInsach = new System.Windows.Forms.Button();
             this.btnSuasach = new System.Windows.Forms.Button();
             this.btnXoasach = new System.Windows.Forms.Button();
-            this.btnBoquasach = new System.Windows.Forms.Button();
             this.btnLuusach = new System.Windows.Forms.Button();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.txtMota = new System.Windows.Forms.TextBox();
@@ -155,6 +154,7 @@
             this.cboTimkiem.Name = "cboTimkiem";
             this.cboTimkiem.Size = new System.Drawing.Size(314, 24);
             this.cboTimkiem.TabIndex = 1;
+            this.cboTimkiem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboTimkiem_KeyDown);
             // 
             // btnTimkiem
             // 
@@ -201,7 +201,6 @@
             this.panel4.Controls.Add(this.btnInsach);
             this.panel4.Controls.Add(this.btnSuasach);
             this.panel4.Controls.Add(this.btnXoasach);
-            this.panel4.Controls.Add(this.btnBoquasach);
             this.panel4.Controls.Add(this.btnLuusach);
             this.panel4.Location = new System.Drawing.Point(12, 88);
             this.panel4.Name = "panel4";
@@ -256,7 +255,7 @@
             this.btnSuasach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuasach.ForeColor = System.Drawing.Color.Teal;
             this.btnSuasach.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSuasach.Location = new System.Drawing.Point(18, 42);
+            this.btnSuasach.Location = new System.Drawing.Point(19, 59);
             this.btnSuasach.Name = "btnSuasach";
             this.btnSuasach.Size = new System.Drawing.Size(81, 32);
             this.btnSuasach.TabIndex = 2;
@@ -269,7 +268,7 @@
             this.btnXoasach.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnXoasach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoasach.ForeColor = System.Drawing.Color.Teal;
-            this.btnXoasach.Location = new System.Drawing.Point(18, 83);
+            this.btnXoasach.Location = new System.Drawing.Point(19, 118);
             this.btnXoasach.Name = "btnXoasach";
             this.btnXoasach.Size = new System.Drawing.Size(84, 32);
             this.btnXoasach.TabIndex = 3;
@@ -277,25 +276,12 @@
             this.btnXoasach.UseVisualStyleBackColor = false;
             this.btnXoasach.Click += new System.EventHandler(this.btnXoasach_Click);
             // 
-            // btnBoquasach
-            // 
-            this.btnBoquasach.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnBoquasach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBoquasach.ForeColor = System.Drawing.Color.Teal;
-            this.btnBoquasach.Location = new System.Drawing.Point(18, 177);
-            this.btnBoquasach.Name = "btnBoquasach";
-            this.btnBoquasach.Size = new System.Drawing.Size(103, 32);
-            this.btnBoquasach.TabIndex = 5;
-            this.btnBoquasach.Text = "Bỏ qua";
-            this.btnBoquasach.UseVisualStyleBackColor = false;
-            this.btnBoquasach.Click += new System.EventHandler(this.btnBoquasach_Click);
-            // 
             // btnLuusach
             // 
             this.btnLuusach.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnLuusach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuusach.ForeColor = System.Drawing.Color.Teal;
-            this.btnLuusach.Location = new System.Drawing.Point(18, 130);
+            this.btnLuusach.Location = new System.Drawing.Point(19, 175);
             this.btnLuusach.Name = "btnLuusach";
             this.btnLuusach.Size = new System.Drawing.Size(76, 32);
             this.btnLuusach.TabIndex = 4;
@@ -519,7 +505,6 @@
         private System.Windows.Forms.TextBox txtMota;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Button btnThoatsach;
-        private System.Windows.Forms.Button btnBoquasach;
         private System.Windows.Forms.Button btnLuusach;
         private System.Windows.Forms.Button btnXoasach;
         private System.Windows.Forms.Button btnSuasach;
