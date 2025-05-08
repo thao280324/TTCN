@@ -17,7 +17,7 @@ namespace thutap
         {
             InitializeComponent();
         }
-        DataTable tblphieukiemke;
+        DataTable phieukiemke;
 
         /*string vaiTro = "";
         private void PhanQuyenChucNang()
@@ -89,13 +89,13 @@ SELECT
     ctk.Masach AS [Mã sách thiếu],
     s.Tensach AS [Tên sách thiếu],
     ctk.Soluongsachthieu AS [Số lượng thiếu]
-FROM tblphieukiemke pk
+FROM phieukiemke pk
 LEFT JOIN nhanvien nv ON pk.Manhanvien = nv.Manhanvien
 LEFT JOIN Chitietkiemke ctk ON pk.Maphieukiemke = ctk.Maphieukiemke
 LEFT JOIN sach s ON ctk.Masach = s.Masach";
 
-            DataTable tblphieukiemke = Class.Functions.GetdatatoTable(sql);
-            dgridkiemke.DataSource = tblphieukiemke;
+            DataTable phieukiemke = Class.Functions.GetdatatoTable(sql);
+            dgridkiemke.DataSource = phieukiemke;
 
             // Auto-size cột vừa dữ liệu
             dgridkiemke.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -220,8 +220,8 @@ LEFT JOIN sach s ON ctk.Masach = s.Masach";
                 return;
             }
 
-            // Cập nhật bảng tblPhieukiemke (chỉ cập nhật ngày kiểm kê)
-            sql = "UPDATE tblPhieukiemke SET Ngaykiemke = '" + Functions.ConvertDateTime(mskNgaykiem.Text) + "' " +
+            // Cập nhật bảng Phieukiemke (chỉ cập nhật ngày kiểm kê)
+            sql = "UPDATE Phieukiemke SET Ngaykiemke = '" + Functions.ConvertDateTime(mskNgaykiem.Text) + "' " +
                   "WHERE Maphieukiemke = N'" + txtMaphieu.Text + "'";
             Functions.RunSql(sql);
 
@@ -315,7 +315,7 @@ LEFT JOIN sach s ON ctk.Masach = s.Masach";
             }
 
             // Kiểm tra mã phiếu trùng
-            sql = "SELECT Maphieukiemke FROM tblphieukiemke WHERE Maphieukiemke = N'" + txtMaphieu.Text.Trim() + "'";
+            sql = "SELECT Maphieukiemke FROM phieukiemke WHERE Maphieukiemke = N'" + txtMaphieu.Text.Trim() + "'";
             if (Functions.checkkey(sql))
             {
                 MessageBox.Show("Mã phiếu kiểm kê này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -324,8 +324,8 @@ LEFT JOIN sach s ON ctk.Masach = s.Masach";
                 return;
             }
 
-            // Insert vào tblphieukiemke
-            sql = "INSERT INTO tblphieukiemke (Maphieukiemke, Manhanvien, Ngaykiemke) " +
+            // Insert vào phieukiemke
+            sql = "INSERT INTO phieukiemke (Maphieukiemke, Manhanvien, Ngaykiemke) " +
                   "VALUES (N'" + txtMaphieu.Text.Trim() + "', N'" + txtManhanvien.Text.Trim() + "', '" +
                   Functions.ConvertDateTime(mskNgaykiem.Text) + "')";
             Functions.RunSql(sql);
@@ -379,8 +379,8 @@ LEFT JOIN sach s ON ctk.Masach = s.Masach";
             string sql = "DELETE FROM Chitietkiemke WHERE Maphieukiemke = N'" + maphieu + "'";
             Functions.RunSql(sql);
 
-            // Xóa dữ liệu từ bảng tblPhieukiemke
-            sql = "DELETE FROM tblPhieukiemke WHERE Maphieukiemke = N'" + maphieu + "'";
+            // Xóa dữ liệu từ bảng Phieukiemke
+            sql = "DELETE FROM Phieukiemke WHERE Maphieukiemke = N'" + maphieu + "'";
             Functions.RunSql(sql);
 
             // Cập nhật lại DataGrid sau khi xóa
@@ -409,7 +409,7 @@ LEFT JOIN sach s ON ctk.Masach = s.Masach";
                 txtMaphieu.Focus();
                 return;
             }
-            if (tblphieukiemke.Rows.Count == 0)
+            if (phieukiemke.Rows.Count == 0)
             {
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

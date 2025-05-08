@@ -17,7 +17,7 @@ namespace thutap.Class
         public static string connstring;
         public static void Connect()
         {
-            connstring = "Data Source=DESKTOP-6RBUAUT\\SQLEXPRESS;Initial Catalog=thuvien;Integrated Security=True;TrustServerCertificate=True";
+            connstring = "Data Source=DESKTOP-IK88KCU;Initial Catalog=thuvien;Integrated Security=True;TrustServerCertificate=True";
             Conn = new SqlConnection();
             Conn.ConnectionString = connstring;
             Conn.Open();
@@ -286,7 +286,26 @@ namespace thutap.Class
             }
             return result;
         }
-
+        public static DataTable LoadDataToTable(string sql)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connstring))
+                {
+                    conn.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(sql, conn))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi LoadDataToTable:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
+        }
 
     }
 }

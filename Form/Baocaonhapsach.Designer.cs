@@ -41,9 +41,9 @@
             this.txtdenngay = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.btnHienthi = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
@@ -129,7 +129,6 @@
             this.txtsoluong.Name = "txtsoluong";
             this.txtsoluong.Size = new System.Drawing.Size(100, 22);
             this.txtsoluong.TabIndex = 13;
-            this.txtsoluong.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txttungay
             // 
@@ -168,7 +167,7 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Phần mềm quản lý sách-Thư viện D FREE BOOK";
             // 
-            // button1
+            // btnIn
             // 
             this.button1.Location = new System.Drawing.Point(290, 368);
             this.button1.Name = "button1";
@@ -178,17 +177,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnHienthi
             // 
-            this.button2.Location = new System.Drawing.Point(467, 368);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Hiển thị";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnHienthi.Location = new System.Drawing.Point(467, 368);
+            this.btnHienthi.Name = "btnHienthi";
+            this.btnHienthi.Size = new System.Drawing.Size(75, 23);
+            this.btnHienthi.TabIndex = 18;
+            this.btnHienthi.Text = "Hiển thị";
+            this.btnHienthi.UseVisualStyleBackColor = true;
+            this.btnHienthi.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnThoat
             // 
             this.button3.Location = new System.Drawing.Point(591, 368);
             this.button3.Name = "button3";
@@ -196,16 +195,15 @@
             this.button3.TabIndex = 19;
             this.button3.Text = "Đóng";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Baocaonhapsach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnThoat);
+            this.Controls.Add(this.btnHienthi);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtdenngay);
             this.Controls.Add(this.txttungay);
@@ -242,8 +240,8 @@
         private System.Windows.Forms.MaskedTextBox txtdenngay;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnHienthi;
+        private System.Windows.Forms.Button btnThoat;
     }
 }

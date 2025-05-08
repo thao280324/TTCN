@@ -27,7 +27,7 @@ namespace thutap
         {
             try
             {
-                string connstring = "Data Source=DESKTOP-6RBUAUT\\SQLEXPRESS;Initial Catalog=thuvien;Integrated Security=True;TrustServerCertificate=True";
+                string connstring = "Data Source=DESKTOP-IK88KCU;Initial Catalog=thuvien;Integrated Security=True;TrustServerCertificate=True";
                 
                 using (SqlConnection connection = new SqlConnection(connstring))
                 {
@@ -115,119 +115,14 @@ namespace thutap
             HienThiBaoCao(tuNgay, denNgay);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string tuNgay = txttungay.Text; // Giả sử txtTuNgay là TextBox chứa "Từ ngày"
-            string denNgay = txtdenngay.Text; // Giả sử txtDenNgay là TextBox chứa "Đến ngày"
-
-            Excel.Application exApp = null;
-            Excel.Workbook exBook = null;
-            Excel.Worksheet exSheet = null;
-            Excel.Range exRange = null;
-
-            try
-            {
-                // Khởi tạo ứng dụng Excel
-                exApp = new Excel.Application();
-                exBook = exApp.Workbooks.Add(Type.Missing);
-                exSheet = (Excel.Worksheet)exBook.Sheets[1]; // Lấy sheet đầu tiên
-
-                // Đặt tiêu đề báo cáo
-                exRange = exSheet.Cells[1, 1];
-                exRange.Value2 = "BÁO CÁO SỐ LƯỢNG NHẬP SÁCH";
-                exRange.Font.Bold = true;
-                exRange.Font.Size = 14;
-
-                // Thông tin về thời gian
-                exSheet.Cells[2, 1].Value2 = $"Từ ngày: {tuNgay}";
-                exSheet.Cells[3, 1].Value2 = $"Đến ngày: {denNgay}";
-
-                // Tiêu đề các cột
-                exSheet.Cells[5, 1].Value2 = "Mã Phiếu Nhập";
-                exSheet.Cells[5, 2].Value2 = "Ngày Nhập";
-                exSheet.Cells[5, 3].Value2 = "Tổng Số Sách";
-
-                // Đổ dữ liệu từ DataGridView (nếu có)
-                if (dgvBaocao.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dgvBaocao.Rows.Count; i++)
-                    {
-                        if (!dgvBaocao.Rows[i].IsNewRow)
-                        {
-                            exSheet.Cells[i + 6, 1].Value2 = dgvBaocao.Rows[i].Cells["MaPhieuNhap"].Value?.ToString();
-                            exSheet.Cells[i + 6, 2].Value2 = dgvBaocao.Rows[i].Cells["NgayNhap"].Value?.ToString();
-                            exSheet.Cells[i + 6, 3].Value2 = dgvBaocao.Rows[i].Cells["TongSoSach"].Value?.ToString();
-                        }
-                    }
-
-                    // Định dạng bảng dữ liệu (tùy chọn)
-                    exRange = exSheet.Range[exSheet.Cells[5, 1], exSheet.Cells[dgvBaocao.Rows.Count + 5, 3]];
-                    exRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
-                    exRange.Columns.AutoFit();
-                }
-                else
-                {
-                    exSheet.Cells[6, 1].Value2 = "Không có dữ liệu để xuất.";
-                }
-
-                // Tổng số lượng (nếu có TextBox txtSoLuong)
-                if (!string.IsNullOrEmpty(txtsoluong.Text))
-                {
-                    exSheet.Cells[dgvBaocao.Rows.Count + 7, 1].Value2 = "Tổng số lượng:";
-                    exSheet.Cells[dgvBaocao.Rows.Count + 7, 2].Value2 = txtsoluong.Text;
-                    exSheet.Cells[dgvBaocao.Rows.Count + 7, 2].Font.Bold = true;
-                }
-
-                // Hiển thị hoặc lưu file Excel
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                saveFileDialog.Title = "Lưu báo cáo Excel";
-                saveFileDialog.FileName = $"BaoCaoNhapSach_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    exBook.SaveAs(saveFileDialog.FileName, Excel.XlFileFormat.xlOpenXMLWorkbook,
-                        Type.Missing, Type.Missing, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
-                        Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                    MessageBox.Show("Xuất báo cáo ra Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    // Nếu người dùng không chọn lưu, bạn có thể hiển thị Excel
-                    exApp.Visible = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi xuất ra Excel: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                // Giải phóng các đối tượng COM
-                if (exRange != null) System.Runtime.InteropServices.Marshal.ReleaseComObject(exRange);
-                if (exSheet != null) System.Runtime.InteropServices.Marshal.ReleaseComObject(exSheet);
-                if (exBook != null) exBook.Close(false, Type.Missing, Type.Missing);
-                if (exApp != null) exApp.Quit();
-
-                // Giải phóng bộ nhớ
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-            }
         }
     }
 }

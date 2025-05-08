@@ -21,7 +21,7 @@ namespace thutap
             InitializeComponent();
         }
 
-        private DataTable tblPhieuphucche;
+        private DataTable phieuphucche;
 
         /*string vaiTro = "";
         private void PhanQuyenChucNang()
@@ -119,13 +119,13 @@ namespace thutap
         s.Tensach AS [Tên sách thiếu],
         ctp.Tinhtranghuhong AS [Tình trạng hư hỏng],
         ctp.Phucche AS [phục chế]
-    FROM tblphieuphucche pk
+    FROM phieuphucche pk
     LEFT JOIN nhanvien nv ON pk.Manhanvien = nv.Manhanvien
-    LEFT JOIN tblchitietphucche ctp ON pk.Maphieuphucche = ctp.Maphieuphucche
+    LEFT JOIN chitietphucche ctp ON pk.Maphieuphucche = ctp.Maphieuphucche
     LEFT JOIN sach s ON ctp.Masach = s.Masach";
 
-            DataTable tblphieuphucche = Class.Functions.GetdatatoTable(sql);
-            dgridphucche.DataSource = tblphieuphucche;
+            DataTable phieuphucche = Class.Functions.GetdatatoTable(sql);
+            dgridphucche.DataSource = phieuphucche;
 
             // Auto-size cột vừa dữ liệu
             dgridphucche.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -214,8 +214,8 @@ namespace thutap
                 return;
             }
 
-            // Cập nhật bảng tblPhieuphucche (chỉ cập nhật ngày kiểm kê)
-            sql = "UPDATE tblPhieuphucche SET Ngaylap = '" + Functions.ConvertDateTime(mskNgaylap.Text) + "' " +
+            // Cập nhật bảng Phieuphucche (chỉ cập nhật ngày kiểm kê)
+            sql = "UPDATE Phieuphucche SET Ngaylap = '" + Functions.ConvertDateTime(mskNgaylap.Text) + "' " +
                   "WHERE Maphieuphucche = N'" + txtMaphieu.Text + "'";
             Functions.RunSql(sql);
 
@@ -223,7 +223,7 @@ namespace thutap
             string tinhtrang = rdoCo.Checked ? "Có phục chế" : "không phục chế";
 
             // Cập nhật bảng Chitietphucche, bao gồm tinhtrangkho và phucche
-            sql = "UPDATE tblchitietphucche SET " +
+            sql = "UPDATE chitietphucche SET " +
                          "Masach = N'" + txtMasach.Text.Trim() + "', " +
                          "Tinhtranghuhong = N'" + tinhtrang + "', " +
                          "Phucche = N'" + txtTensach.Text.Trim() + "' " +
@@ -256,11 +256,11 @@ namespace thutap
             }
 
             // Xóa dữ liệu từ bảng Chitietphucche
-            string sql = "DELETE FROM tblchitietphucche WHERE Maphieuphucche = N'" + maphieu + "'";
+            string sql = "DELETE FROM chitietphucche WHERE Maphieuphucche = N'" + maphieu + "'";
             Functions.RunSql(sql);
 
-            // Xóa dữ liệu từ bảng tblPhieukiemke
-            sql = "DELETE FROM tblPhieuphucche WHERE Maphieuphucche = N'" + maphieu + "'";
+            // Xóa dữ liệu từ bảng Phieukiemke
+            sql = "DELETE FROM phieuphucche WHERE Maphieuphucche = N'" + maphieu + "'";
             Functions.RunSql(sql);
 
             // Cập nhật lại DataGrid sau khi xóa
@@ -309,7 +309,7 @@ namespace thutap
             }
 
             // Kiểm tra mã phiếu phục chế đã tồn tại chưa
-            sql = "SELECT Maphieuphucche FROM tblphieuphucche WHERE Maphieuphucche = N'" + txtMaphieu.Text.Trim() + "'";
+            sql = "SELECT Maphieuphucche FROM phieuphucche WHERE Maphieuphucche = N'" + txtMaphieu.Text.Trim() + "'";
             if (Functions.checkkey(sql))
             {
                 MessageBox.Show("Mã phiếu phục chế này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -356,8 +356,8 @@ namespace thutap
                     }
                 }
 
-                // Insert vào tblphieuphucche
-                string insertPhieuSql = "INSERT INTO tblphieuphucche (Maphieuphucche, Manhanvien, Ngaylap) VALUES (@Maphieuphucche, @Manhanvien, @Ngaylap)";
+                // Insert vào phieuphucche
+                string insertPhieuSql = "INSERT INTO phieuphucche (Maphieuphucche, Manhanvien, Ngaylap) VALUES (@Maphieuphucche, @Manhanvien, @Ngaylap)";
                 using (SqlCommand cmd = new SqlCommand(insertPhieuSql, conn))
                 {
                     cmd.Parameters.AddWithValue("@Maphieuphucche", txtMaphieu.Text.Trim());
@@ -366,8 +366,8 @@ namespace thutap
                     cmd.ExecuteNonQuery();
                 }
 
-                // Insert vào tblchitietphucche
-                string insertChiTietSql = "INSERT INTO tblchitietphucche (Maphieuphucche, Masach, Tinhtranghuhong, Phucche) VALUES (@Maphieuphucche, @Masach, @Tinhtranghuhong, @Phucche)";
+                // Insert vào chitietphucche
+                string insertChiTietSql = "INSERT INTO chitietphucche (Maphieuphucche, Masach, Tinhtranghuhong, Phucche) VALUES (@Maphieuphucche, @Masach, @Tinhtranghuhong, @Phucche)";
                 using (SqlCommand cmd = new SqlCommand(insertChiTietSql, conn))
                 {
                     cmd.Parameters.AddWithValue("@Maphieuphucche", txtMaphieu.Text.Trim());

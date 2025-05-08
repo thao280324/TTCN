@@ -38,6 +38,7 @@ namespace thutap
             txtTenSach.ReadOnly = true;
           //  txtSoLuong.ReadOnly = true;
             txtTenTinhTrang.ReadOnly = true;
+            EnableAutoComplete();
 
             Class.function.FillCombo2("select Mathanhvien,Tenthanhvien from thanhvien", cboMaKH, "Mathanhvien", "Tenthanhvien");
             cboMaKH.SelectedIndex = -1;
@@ -57,6 +58,12 @@ namespace thutap
             }
             load_datagridviewchitiet();
         }
+        private void EnableAutoComplete()
+        {
+            cboMaNV.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboMaNV.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+        }
+
         private void PhanQuyenChucNang()
         {
             vaiTro = vaiTro.Trim();  // Loại bỏ khoảng trắng
@@ -111,8 +118,8 @@ namespace thutap
             txtTenNV.Text = "";
             cboMaKH.Text = "";
             txtTenKH.Text = "";
-            rdoOff.Text = "";
-            rdoOnl.Text = "";
+           // rdoOff.Text = "";
+           // rdoOnl.Text = "";
             txtTong.Text = "0";
         }
         private void ResetValuesHang()
@@ -150,9 +157,9 @@ namespace thutap
             datagridThue.DataSource = tblCTTT;
             datagridThue.Columns[0].HeaderText = "Mã sách";
             datagridThue.Columns[1].HeaderText = "Tên sách";
-            datagridThue.Columns[2].HeaderText = "Mã Tình Trạng";
-            datagridThue.Columns[3].HeaderText = "Tên Tình Trạng";
-            datagridThue.Columns[4].HeaderText = "Số Lượng";
+            datagridThue.Columns[2].HeaderText = "Số lượng";
+            datagridThue.Columns[3].HeaderText = "Mã tình trạng";
+            datagridThue.Columns[4].HeaderText = "Tên tình trạng";
             datagridThue.AllowUserToAddRows = false;
             datagridThue.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
@@ -206,6 +213,8 @@ namespace thutap
             ResetValues();
             txtMaThue.Text = function.CreateKey("PM");
             load_datagridviewchitiet();
+            rdoOff.Enabled=true;
+            rdoOnl.Enabled=true;
         }
 
         private void cboMaNV_TextChanged(object sender, EventArgs e)
@@ -215,7 +224,7 @@ namespace thutap
                 txtTenNV.Text = "";
             // Khi kich chon Ma nhan vien thi ten nhan vien se tu dong hien ra
             str = "Select Tennhanvien from nhanvien where Manhanvien =N'" +
-cboMaNV.SelectedValue + "'";
+cboMaNV.Text + "'";
             txtTenNV.Text = function.GetFieldValues(str);
 
         }

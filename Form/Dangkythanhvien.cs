@@ -369,7 +369,7 @@ namespace thutap
 
             // Tạo tiêu đề cột trong worksheet
             worksheet.Range["A1", "E1"].Merge();  // Merge các cột A đến E (có thể chỉnh lại nếu cần)
-            worksheet.Range["A1"].Value = "DANH SÁCH SÁCH CỦA THƯ VIỆN";  // Tiêu đề
+            worksheet.Range["A1"].Value = "DANH SÁCH ĐĂNG KÝ THẺ THÀNH VIÊN";  // Tiêu đề
             worksheet.Range["A1"].Font.Bold = true;
             worksheet.Range["A1"].Font.Size = 14;
             worksheet.Range["A1"].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;

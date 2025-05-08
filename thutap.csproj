@@ -126,7 +126,7 @@
     <Compile Include="Form\Phieuphucche.Designer.cs">
       <DependentUpon>Phieuphucche.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Form\yeucaunhap.cs">
       <SubType>Form</SubType>
