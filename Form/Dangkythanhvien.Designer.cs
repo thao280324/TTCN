@@ -43,7 +43,6 @@
             this.btnInthe = new System.Windows.Forms.Button();
             this.btnSuathe = new System.Windows.Forms.Button();
             this.btnXoathe = new System.Windows.Forms.Button();
-            this.btnBoquathe = new System.Windows.Forms.Button();
             this.btnLuuthe = new System.Windows.Forms.Button();
             this.lblTen = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,11 +51,11 @@
             this.lblGioitinh = new System.Windows.Forms.Label();
             this.rdoNam = new System.Windows.Forms.RadioButton();
             this.rdoNu = new System.Windows.Forms.RadioButton();
-            this.mskNgay = new System.Windows.Forms.MaskedTextBox();
             this.txtMadocgia = new System.Windows.Forms.TextBox();
             this.txtTendocgia = new System.Windows.Forms.TextBox();
             this.DataGridView2 = new System.Windows.Forms.DataGridView();
             this.txtSodienthoai = new System.Windows.Forms.TextBox();
+            this.dtpNgaydangky = new System.Windows.Forms.DateTimePicker();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
@@ -116,6 +115,7 @@
             this.cboTimkiemthe.Name = "cboTimkiemthe";
             this.cboTimkiemthe.Size = new System.Drawing.Size(272, 24);
             this.cboTimkiemthe.TabIndex = 1;
+            this.cboTimkiemthe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboTimkiemthe_KeyDown);
             // 
             // btnTimkiemthe
             // 
@@ -157,7 +157,6 @@
             this.panel4.Controls.Add(this.btnInthe);
             this.panel4.Controls.Add(this.btnSuathe);
             this.panel4.Controls.Add(this.btnXoathe);
-            this.panel4.Controls.Add(this.btnBoquathe);
             this.panel4.Controls.Add(this.btnLuuthe);
             this.panel4.Location = new System.Drawing.Point(56, 255);
             this.panel4.Name = "panel4";
@@ -198,7 +197,7 @@
             this.btnInthe.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnInthe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInthe.ForeColor = System.Drawing.Color.Teal;
-            this.btnInthe.Location = new System.Drawing.Point(37, 240);
+            this.btnInthe.Location = new System.Drawing.Point(37, 239);
             this.btnInthe.Name = "btnInthe";
             this.btnInthe.Size = new System.Drawing.Size(130, 32);
             this.btnInthe.TabIndex = 7;
@@ -212,7 +211,7 @@
             this.btnSuathe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuathe.ForeColor = System.Drawing.Color.Teal;
             this.btnSuathe.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSuathe.Location = new System.Drawing.Point(37, 45);
+            this.btnSuathe.Location = new System.Drawing.Point(37, 64);
             this.btnSuathe.Name = "btnSuathe";
             this.btnSuathe.Size = new System.Drawing.Size(81, 32);
             this.btnSuathe.TabIndex = 2;
@@ -225,7 +224,7 @@
             this.btnXoathe.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnXoathe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoathe.ForeColor = System.Drawing.Color.Teal;
-            this.btnXoathe.Location = new System.Drawing.Point(37, 92);
+            this.btnXoathe.Location = new System.Drawing.Point(37, 118);
             this.btnXoathe.Name = "btnXoathe";
             this.btnXoathe.Size = new System.Drawing.Size(84, 32);
             this.btnXoathe.TabIndex = 3;
@@ -233,25 +232,12 @@
             this.btnXoathe.UseVisualStyleBackColor = false;
             this.btnXoathe.Click += new System.EventHandler(this.btnXoathe_Click);
             // 
-            // btnBoquathe
-            // 
-            this.btnBoquathe.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnBoquathe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBoquathe.ForeColor = System.Drawing.Color.Teal;
-            this.btnBoquathe.Location = new System.Drawing.Point(37, 186);
-            this.btnBoquathe.Name = "btnBoquathe";
-            this.btnBoquathe.Size = new System.Drawing.Size(103, 32);
-            this.btnBoquathe.TabIndex = 5;
-            this.btnBoquathe.Text = "Bỏ qua";
-            this.btnBoquathe.UseVisualStyleBackColor = false;
-            this.btnBoquathe.Click += new System.EventHandler(this.btnBoquathe_Click);
-            // 
             // btnLuuthe
             // 
             this.btnLuuthe.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnLuuthe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuthe.ForeColor = System.Drawing.Color.Teal;
-            this.btnLuuthe.Location = new System.Drawing.Point(37, 138);
+            this.btnLuuthe.Location = new System.Drawing.Point(37, 177);
             this.btnLuuthe.Name = "btnLuuthe";
             this.btnLuuthe.Size = new System.Drawing.Size(76, 32);
             this.btnLuuthe.TabIndex = 4;
@@ -332,15 +318,6 @@
             this.rdoNu.Text = "Nữ";
             this.rdoNu.UseVisualStyleBackColor = true;
             // 
-            // mskNgay
-            // 
-            this.mskNgay.Location = new System.Drawing.Point(406, 517);
-            this.mskNgay.Mask = "00/00/0000";
-            this.mskNgay.Name = "mskNgay";
-            this.mskNgay.Size = new System.Drawing.Size(100, 22);
-            this.mskNgay.TabIndex = 33;
-            this.mskNgay.ValidatingType = typeof(System.DateTime);
-            // 
             // txtMadocgia
             // 
             this.txtMadocgia.Location = new System.Drawing.Point(394, 300);
@@ -374,17 +351,25 @@
             this.txtSodienthoai.Size = new System.Drawing.Size(170, 22);
             this.txtSodienthoai.TabIndex = 39;
             // 
+            // dtpNgaydangky
+            // 
+            this.dtpNgaydangky.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaydangky.Location = new System.Drawing.Point(394, 520);
+            this.dtpNgaydangky.Name = "dtpNgaydangky";
+            this.dtpNgaydangky.Size = new System.Drawing.Size(170, 22);
+            this.dtpNgaydangky.TabIndex = 40;
+            // 
             // Dangkythanhvien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1340, 683);
+            this.Controls.Add(this.dtpNgaydangky);
             this.Controls.Add(this.txtSodienthoai);
             this.Controls.Add(this.DataGridView2);
             this.Controls.Add(this.txtTendocgia);
             this.Controls.Add(this.txtMadocgia);
-            this.Controls.Add(this.mskNgay);
             this.Controls.Add(this.rdoNu);
             this.Controls.Add(this.rdoNam);
             this.Controls.Add(this.lblGioitinh);
@@ -425,7 +410,6 @@
         private System.Windows.Forms.Button btnInthe;
         private System.Windows.Forms.Button btnSuathe;
         private System.Windows.Forms.Button btnXoathe;
-        private System.Windows.Forms.Button btnBoquathe;
         private System.Windows.Forms.Button btnLuuthe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboTimkiemthe;
@@ -436,10 +420,10 @@
         private System.Windows.Forms.Label lblGioitinh;
         private System.Windows.Forms.RadioButton rdoNam;
         private System.Windows.Forms.RadioButton rdoNu;
-        private System.Windows.Forms.MaskedTextBox mskNgay;
         private System.Windows.Forms.TextBox txtMadocgia;
         private System.Windows.Forms.TextBox txtTendocgia;
         private System.Windows.Forms.DataGridView DataGridView2;
         private System.Windows.Forms.TextBox txtSodienthoai;
+        private System.Windows.Forms.DateTimePicker dtpNgaydangky;
     }
 }

@@ -43,7 +43,6 @@
             this.btnLuuphieu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.txtTennhanvien = new System.Windows.Forms.TextBox();
             this.txtMaphieu = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtTong = new System.Windows.Forms.TextBox();
+            this.dtpNgaykiemke = new System.Windows.Forms.DateTimePicker();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
@@ -218,8 +218,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpNgaykiemke);
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
             this.groupBox1.Controls.Add(this.txtTennhanvien);
             this.groupBox1.Controls.Add(this.txtMaphieu);
             this.groupBox1.Controls.Add(this.label7);
@@ -240,15 +240,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(224, 24);
             this.comboBox1.TabIndex = 9;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(185, 177);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(224, 22);
-            this.maskedTextBox1.TabIndex = 8;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
             // 
             // txtTennhanvien
             // 
@@ -442,6 +433,14 @@
             this.txtTong.Size = new System.Drawing.Size(96, 22);
             this.txtTong.TabIndex = 13;
             // 
+            // dtpNgaykiemke
+            // 
+            this.dtpNgaykiemke.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaykiemke.Location = new System.Drawing.Point(185, 177);
+            this.dtpNgaykiemke.Name = "dtpNgaykiemke";
+            this.dtpNgaykiemke.Size = new System.Drawing.Size(224, 22);
+            this.dtpNgaykiemke.TabIndex = 10;
+            // 
             // Phieukiemke
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -503,7 +502,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.TextBox txtTennhanvien;
         private System.Windows.Forms.TextBox txtMaphieu;
         private System.Windows.Forms.ComboBox comboBox2;
@@ -512,5 +510,6 @@
         private System.Windows.Forms.RadioButton rdoThieu;
         private System.Windows.Forms.RadioButton rdoDu;
         private System.Windows.Forms.TextBox txtTong;
+        private System.Windows.Forms.DateTimePicker dtpNgaykiemke;
     }
 }

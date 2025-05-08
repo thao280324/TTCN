@@ -42,7 +42,6 @@
             this.btnLuuphieu = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.mskNgaylap = new System.Windows.Forms.MaskedTextBox();
             this.cboManhanvien = new System.Windows.Forms.ComboBox();
             this.txtTennhanvien = new System.Windows.Forms.TextBox();
             this.txtMaphieu = new System.Windows.Forms.TextBox();
@@ -51,6 +50,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cboMasach = new System.Windows.Forms.ComboBox();
             this.txtTensach = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             this.rdoCo = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtpNgaylap = new System.Windows.Forms.DateTimePicker();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
@@ -210,7 +210,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.mskNgaylap);
+            this.groupBox1.Controls.Add(this.dtpNgaylap);
             this.groupBox1.Controls.Add(this.cboManhanvien);
             this.groupBox1.Controls.Add(this.txtTennhanvien);
             this.groupBox1.Controls.Add(this.txtMaphieu);
@@ -224,15 +224,6 @@
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chung";
-            // 
-            // mskNgaylap
-            // 
-            this.mskNgaylap.Location = new System.Drawing.Point(168, 199);
-            this.mskNgaylap.Mask = "00/00/0000";
-            this.mskNgaylap.Name = "mskNgaylap";
-            this.mskNgaylap.Size = new System.Drawing.Size(216, 22);
-            this.mskNgaylap.TabIndex = 9;
-            this.mskNgaylap.ValidatingType = typeof(System.DateTime);
             // 
             // cboManhanvien
             // 
@@ -314,6 +305,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhập";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(190, 145);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(304, 22);
+            this.textBox1.TabIndex = 10;
+            // 
             // cboMasach
             // 
             this.cboMasach.FormattingEnabled = true;
@@ -391,12 +389,13 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Tình trạng hư hỏng";
             // 
-            // textBox1
+            // dtpNgaylap
             // 
-            this.textBox1.Location = new System.Drawing.Point(190, 145);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(304, 22);
-            this.textBox1.TabIndex = 10;
+            this.dtpNgaylap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaylap.Location = new System.Drawing.Point(168, 199);
+            this.dtpNgaylap.Name = "dtpNgaylap";
+            this.dtpNgaylap.Size = new System.Drawing.Size(216, 22);
+            this.dtpNgaylap.TabIndex = 9;
             // 
             // Phieuphucche
             // 
@@ -452,12 +451,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton rdoKhong;
         private System.Windows.Forms.RadioButton rdoCo;
-        private System.Windows.Forms.MaskedTextBox mskNgaylap;
         private System.Windows.Forms.ComboBox cboManhanvien;
         private System.Windows.Forms.TextBox txtTennhanvien;
         private System.Windows.Forms.TextBox txtMaphieu;
         private System.Windows.Forms.ComboBox cboMasach;
         private System.Windows.Forms.TextBox txtTensach;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtpNgaylap;
     }
 }

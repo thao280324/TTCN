@@ -64,10 +64,20 @@ namespace thutap
                 //
             }
         }
+        private void EnableAutoComplete()
+        {
+            cboTimkiemphieunhap.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboTimkiemphieunhap.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+            cboMasach.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboMasach.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+            cboManhanvien.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboManhanvien.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+
+        }
         private void ResetValues()
         {
             txtMaphieunhap.Text = "";
-            mskNgaylap.Text = DateTime.Now.ToShortDateString();
+            dtpNgaylap.Text = DateTime.Now.ToShortDateString();
             cboManhanvien.Text = "";
             txtTennhanvien.Text = "";
             cboMasach.Text = "";
@@ -100,7 +110,7 @@ namespace thutap
             // Ngày lập
             str = "SELECT Ngaylap FROM yeucaunhap WHERE Maphieuyeucaunhap=N'"
                   + txtMaphieunhap.Text + "'";
-            mskNgaylap.Text = function.GetFieldValues(str);
+            dtpNgaylap.Text = function.GetFieldValues(str);
 
             // Mã & tên nhân viên
             str = "SELECT Manhanvien FROM yeucaunhap WHERE Maphieuyeucaunhap=N'"
@@ -173,11 +183,11 @@ namespace thutap
                 txtMaphieunhap.Focus();
                 return;
             }
-            if (mskNgaylap.Text.Trim().Length == 0)
+            if (dtpNgaylap.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập ngày lập", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                mskNgaylap.Focus();
+                dtpNgaylap.Focus();
                 return;
             }
             if (cboManhanvien.Text.Trim().Length == 0)
@@ -188,7 +198,7 @@ namespace thutap
                 return;
             }
 
-            DateTime ngaylap = DateTime.ParseExact(mskNgaylap.Text.Trim(), "dd/MM/yyyy", null);
+            DateTime ngaylap = DateTime.ParseExact(dtpNgaylap.Text.Trim(), "dd/MM/yyyy", null);
 
             // 2) Kiểm tra xem phiếu đã tồn tại chưa, nếu chưa thì thêm phiếu mới
             string sql = "SELECT Maphieuyeucaunhap FROM yeucaunhap WHERE Maphieuyeucaunhap=N'" + txtMaphieunhap.Text.Trim() + "'";
@@ -345,8 +355,8 @@ namespace thutap
         private void cboManhanvien_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtTennhanvien.Text = function.GetFieldValues(
-                "SELECT Tennhanvien FROM nhanvien " +
-                "WHERE Manhanvien=N'" + cboManhanvien.SelectedValue + "'");
+               "SELECT Tennhanvien FROM nhanvien " +
+               "WHERE Manhanvien=N'" + cboManhanvien.SelectedValue + "'");
         }
 
         private void btnInphieumuon_Click(object sender, EventArgs e)
@@ -470,6 +480,37 @@ namespace thutap
 
             // Đặt chỉ số của combo box về -1, tức là không có mục nào được chọn
             cboTimkiemphieunhap.SelectedIndex = -1;
+        }
+
+        private void cboTimkiemphieunhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Ngừng xử lý tiếp sự kiện nếu muốn giữ lại giá trị nhập vào
+                e.Handled = true; // Ngăn không cho sự kiện Enter tiếp tục
+            }
+        }
+
+        private void cboMasach_TextChanged(object sender, EventArgs e)
+        {
+            string str;
+            if (cboMasach.Text == "")
+                txtTensach.Text = "";
+            // Khi kich chon Ma nhan vien thi ten nhan vien se tu dong hien ra
+            str = "Select Tensach from sach where Masach =N'" +
+cboMasach.Text + "'";
+            txtTensach.Text = function.GetFieldValues(str);
+        }
+
+        private void cboManhanvien_TextChanged(object sender, EventArgs e)
+        {
+            string str;
+            if (cboManhanvien.Text == "")
+                txtTennhanvien.Text = "";
+            // Khi kich chon Ma nhan vien thi ten nhan vien se tu dong hien ra
+            str = "Select Tennhanvien from nhanvien where Manhanvien =N'" +
+cboManhanvien.Text + "'";
+            txtTennhanvien.Text = function.GetFieldValues(str);
         }
     }
 }

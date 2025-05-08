@@ -39,6 +39,8 @@
             this.lblMa = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grptra = new System.Windows.Forms.GroupBox();
+            this.dtpNgaymuon = new System.Windows.Forms.DateTimePicker();
+            this.dtpNgaytra = new System.Windows.Forms.DateTimePicker();
             this.mskNgayphaitra = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,7 +53,6 @@
             this.lblsachtra = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.cboManhanvien = new System.Windows.Forms.ComboBox();
-            this.mskNgaymuon = new System.Windows.Forms.MaskedTextBox();
             this.txtSongaymuon = new System.Windows.Forms.TextBox();
             this.txtMaphieutra = new System.Windows.Forms.TextBox();
             this.txtTenvipham = new System.Windows.Forms.TextBox();
@@ -72,7 +73,6 @@
             this.btnXoaphieu = new System.Windows.Forms.Button();
             this.btnLuuphieu = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.dtpNgaytra = new System.Windows.Forms.DateTimePicker();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.plheader.SuspendLayout();
@@ -180,6 +180,7 @@
             // 
             // grptra
             // 
+            this.grptra.Controls.Add(this.dtpNgaymuon);
             this.grptra.Controls.Add(this.dtpNgaytra);
             this.grptra.Controls.Add(this.mskNgayphaitra);
             this.grptra.Controls.Add(this.label5);
@@ -190,7 +191,6 @@
             this.grptra.Controls.Add(this.lblsachtra);
             this.grptra.Controls.Add(this.dataGridView2);
             this.grptra.Controls.Add(this.cboManhanvien);
-            this.grptra.Controls.Add(this.mskNgaymuon);
             this.grptra.Controls.Add(this.txtSongaymuon);
             this.grptra.Controls.Add(this.txtMaphieutra);
             this.grptra.Controls.Add(this.txtTenvipham);
@@ -210,6 +210,22 @@
             this.grptra.TabIndex = 41;
             this.grptra.TabStop = false;
             this.grptra.Text = "Phiếu trả";
+            // 
+            // dtpNgaymuon
+            // 
+            this.dtpNgaymuon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaymuon.Location = new System.Drawing.Point(182, 86);
+            this.dtpNgaymuon.Name = "dtpNgaymuon";
+            this.dtpNgaymuon.Size = new System.Drawing.Size(195, 22);
+            this.dtpNgaymuon.TabIndex = 49;
+            // 
+            // dtpNgaytra
+            // 
+            this.dtpNgaytra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaytra.Location = new System.Drawing.Point(182, 244);
+            this.dtpNgaytra.Name = "dtpNgaytra";
+            this.dtpNgaytra.Size = new System.Drawing.Size(195, 22);
+            this.dtpNgaytra.TabIndex = 48;
             // 
             // mskNgayphaitra
             // 
@@ -330,15 +346,7 @@
             this.cboManhanvien.Name = "cboManhanvien";
             this.cboManhanvien.Size = new System.Drawing.Size(195, 24);
             this.cboManhanvien.TabIndex = 17;
-            // 
-            // mskNgaymuon
-            // 
-            this.mskNgaymuon.Location = new System.Drawing.Point(182, 87);
-            this.mskNgaymuon.Mask = "00/00/0000";
-            this.mskNgaymuon.Name = "mskNgaymuon";
-            this.mskNgaymuon.Size = new System.Drawing.Size(195, 22);
-            this.mskNgaymuon.TabIndex = 15;
-            this.mskNgaymuon.ValidatingType = typeof(System.DateTime);
+//            this.cboManhanvien.TextChanged += new System.EventHandler(this.cboManhanvien_TextChanged);
             // 
             // txtSongaymuon
             // 
@@ -400,6 +408,7 @@
             this.cboMavipham.Name = "cboMavipham";
             this.cboMavipham.Size = new System.Drawing.Size(176, 24);
             this.cboMavipham.TabIndex = 7;
+            this.cboMavipham.SelectedIndexChanged += new System.EventHandler(this.cboMavipham_SelectedIndexChanged);
             this.cboMavipham.TextChanged += new System.EventHandler(this.cboMavipham_TextChanged);
             // 
             // lblSongaymuon
@@ -556,14 +565,6 @@
             this.label2.TabIndex = 44;
             this.label2.Text = "Phiếu mượn sách :";
             // 
-            // dtpNgaytra
-            // 
-            this.dtpNgaytra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaytra.Location = new System.Drawing.Point(182, 244);
-            this.dtpNgaytra.Name = "dtpNgaytra";
-            this.dtpNgaytra.Size = new System.Drawing.Size(195, 22);
-            this.dtpNgaytra.TabIndex = 48;
-            // 
             // FormPhieutra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -623,7 +624,6 @@
         private System.Windows.Forms.TextBox txtTenvipham;
         private System.Windows.Forms.CheckBox chkVipham;
         private System.Windows.Forms.Label lblTenvipham;
-        private System.Windows.Forms.MaskedTextBox mskNgaymuon;
         private System.Windows.Forms.ComboBox cboManhanvien;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel4;
@@ -645,5 +645,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMaphieumuon;
         private System.Windows.Forms.DateTimePicker dtpNgaytra;
+        private System.Windows.Forms.DateTimePicker dtpNgaymuon;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using thutap.Class;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace thutap
 {
@@ -29,7 +30,8 @@ namespace thutap
             cboChonphieu.SelectedIndex = -1;
             txtManhanvien.Enabled = false;
             txtMaphieu.Enabled = false;
-            mskNgay.Enabled = false;
+            dtpNgaylap.Enabled = false;
+            EnableAutoComplete();
         }
         private void PhanQuyenChucNang()
         {
@@ -48,13 +50,17 @@ namespace thutap
                 //phân quyền
             }
         }
-
-        private void cboChonphieu_SelectedIndexChanged(object sender, EventArgs e)
+        private void EnableAutoComplete()
+        {
+            cboChonphieu.AutoCompleteMode = AutoCompleteMode.SuggestAppend;  // Gợi ý và thêm vào
+            cboChonphieu.AutoCompleteSource = AutoCompleteSource.ListItems;  // Lấy dữ liệu từ Items của ComboBox
+        }
+            private void cboChonphieu_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboChonphieu.SelectedIndex != -1)
             {
                 // Lấy Mã phiếu đã chọn
-                string maphieu = cboChonphieu.SelectedValue.ToString();
+                string maphieu = cboChonphieu.Text.ToString();
 
                 // Hiển thị các thông tin của phiếu vào các textbox
                 string sql = "SELECT * FROM yeucaunhap WHERE Maphieuyeucaunhap = N'" + maphieu + "'";
@@ -62,12 +68,18 @@ namespace thutap
                 if (dt.Rows.Count > 0)
                 {
                     txtMaphieu.Text = dt.Rows[0]["Maphieuyeucaunhap"].ToString();
-                    mskNgay.Text = dt.Rows[0]["Ngaylap"].ToString();
+                    dtpNgaylap.Text = dt.Rows[0]["Ngaylap"].ToString();
                     string manv = dt.Rows[0]["Manhanvien"].ToString();
                     txtManhanvien.Text = manv;
                     // Cập nhật thông tin sách vào DataGridView
                     Load_DataGridViewChitiet(maphieu);
                 }
+            }
+            // Kiểm tra xem có mục nào được chọn không
+            if (cboChonphieu.SelectedItem != null)
+            {
+                string selectedValue = cboChonphieu.SelectedItem.ToString();
+                Console.WriteLine(selectedValue); // In giá trị ra console
             }
         }
         private void Load_DataGridViewChitiet(string maphieu)
@@ -123,6 +135,16 @@ namespace thutap
         private void cboChonphieu_DropDown(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboChonphieu_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Ngừng xử lý tiếp sự kiện nếu muốn giữ lại giá trị nhập vào
+                e.Handled = true; // Ngăn không cho sự kiện Enter tiếp tục
+            }
         }
     }
 }

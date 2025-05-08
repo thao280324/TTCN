@@ -40,11 +40,11 @@
             this.btnTimkiemphieumuon = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpNgaymuon = new System.Windows.Forms.DateTimePicker();
             this.rdoOnl = new System.Windows.Forms.RadioButton();
             this.rdoOff = new System.Windows.Forms.RadioButton();
             this.cboMaKH = new System.Windows.Forms.ComboBox();
             this.cboMaNV = new System.Windows.Forms.ComboBox();
-            this.mskNgayThue = new System.Windows.Forms.MaskedTextBox();
             this.txtTenNV = new System.Windows.Forms.TextBox();
             this.txtTenKH = new System.Windows.Forms.TextBox();
             this.txtMaThue = new System.Windows.Forms.TextBox();
@@ -147,7 +147,7 @@
             this.panel3.Controls.Add(this.btnTimkiemphieumuon);
             this.panel3.Location = new System.Drawing.Point(12, 689);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(505, 64);
+            this.panel3.Size = new System.Drawing.Size(537, 64);
             this.panel3.TabIndex = 7;
             // 
             // lblMa
@@ -163,18 +163,19 @@
             // cboPhieumuon
             // 
             this.cboPhieumuon.FormattingEnabled = true;
-            this.cboPhieumuon.Location = new System.Drawing.Point(128, 32);
+            this.cboPhieumuon.Location = new System.Drawing.Point(146, 32);
             this.cboPhieumuon.Name = "cboPhieumuon";
-            this.cboPhieumuon.Size = new System.Drawing.Size(249, 24);
+            this.cboPhieumuon.Size = new System.Drawing.Size(274, 24);
             this.cboPhieumuon.TabIndex = 1;
             this.cboPhieumuon.DropDown += new System.EventHandler(this.cboPhieumuon_DropDown);
+            this.cboPhieumuon.SelectedIndexChanged += new System.EventHandler(this.cboPhieumuon_SelectedIndexChanged);
             // 
             // btnTimkiemphieumuon
             // 
             this.btnTimkiemphieumuon.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnTimkiemphieumuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimkiemphieumuon.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnTimkiemphieumuon.Location = new System.Drawing.Point(383, 26);
+            this.btnTimkiemphieumuon.Location = new System.Drawing.Point(438, 29);
             this.btnTimkiemphieumuon.Name = "btnTimkiemphieumuon";
             this.btnTimkiemphieumuon.Size = new System.Drawing.Size(99, 32);
             this.btnTimkiemphieumuon.TabIndex = 0;
@@ -184,11 +185,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpNgaymuon);
             this.groupBox1.Controls.Add(this.rdoOnl);
             this.groupBox1.Controls.Add(this.rdoOff);
             this.groupBox1.Controls.Add(this.cboMaKH);
             this.groupBox1.Controls.Add(this.cboMaNV);
-            this.groupBox1.Controls.Add(this.mskNgayThue);
             this.groupBox1.Controls.Add(this.txtTenNV);
             this.groupBox1.Controls.Add(this.txtTenKH);
             this.groupBox1.Controls.Add(this.txtMaThue);
@@ -205,6 +206,14 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chung";
+            // 
+            // dtpNgaymuon
+            // 
+            this.dtpNgaymuon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaymuon.Location = new System.Drawing.Point(186, 48);
+            this.dtpNgaymuon.Name = "dtpNgaymuon";
+            this.dtpNgaymuon.Size = new System.Drawing.Size(278, 22);
+            this.dtpNgaymuon.TabIndex = 19;
             // 
             // rdoOnl
             // 
@@ -244,17 +253,7 @@
             this.cboMaNV.Name = "cboMaNV";
             this.cboMaNV.Size = new System.Drawing.Size(278, 24);
             this.cboMaNV.TabIndex = 14;
-//            this.cboMaNV.SelectedIndexChanged += new System.EventHandler(this.cboMaNV_SelectedIndexChanged);
             this.cboMaNV.TextChanged += new System.EventHandler(this.cboMaNV_TextChanged);
-            // 
-            // mskNgayThue
-            // 
-            this.mskNgayThue.Location = new System.Drawing.Point(186, 55);
-            this.mskNgayThue.Mask = "00/00/0000";
-            this.mskNgayThue.Name = "mskNgayThue";
-            this.mskNgayThue.Size = new System.Drawing.Size(218, 22);
-            this.mskNgayThue.TabIndex = 13;
-            this.mskNgayThue.ValidatingType = typeof(System.DateTime);
             // 
             // txtTenNV
             // 
@@ -641,7 +640,6 @@
         private System.Windows.Forms.TextBox txtMaThue;
         private System.Windows.Forms.ComboBox cboMaKH;
         private System.Windows.Forms.ComboBox cboMaNV;
-        private System.Windows.Forms.MaskedTextBox mskNgayThue;
         private System.Windows.Forms.TextBox txtTenNV;
         private System.Windows.Forms.RadioButton rdoOnl;
         private System.Windows.Forms.RadioButton rdoOff;
@@ -659,5 +657,6 @@
         private System.Windows.Forms.ComboBox cboMaSach;
         private System.Windows.Forms.TextBox txtTong;
         private System.Windows.Forms.DataGridView datagridThue;
+        private System.Windows.Forms.DateTimePicker dtpNgaymuon;
     }
 }
